@@ -28,7 +28,97 @@ public class JFrmPrincipal_ebg extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMnuPrincipal_ebg = new javax.swing.JMenu();
+        jMnuClientes_ebg = new javax.swing.JMenuItem();
+        jMnuUsuarios_ebg = new javax.swing.JMenuItem();
+        jMenuCartao_ebg = new javax.swing.JMenuItem();
+        jMenuVendedor_ebg = new javax.swing.JMenuItem();
+        jMenuProduto_ebg = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuSair_ebg = new javax.swing.JMenuItem();
+        jMnuMovimento_ebg = new javax.swing.JMenu();
+        jMnuVendas_ebg = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jMnuPrincipal_ebg.setMnemonic('P');
+        jMnuPrincipal_ebg.setText("Principal");
+
+        jMnuClientes_ebg.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMnuClientes_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/09 - cliente.png"))); // NOI18N
+        jMnuClientes_ebg.setText("Clientes");
+        jMnuClientes_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuClientes_ebgActionPerformed(evt);
+            }
+        });
+        jMnuPrincipal_ebg.add(jMnuClientes_ebg);
+
+        jMnuUsuarios_ebg.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMnuUsuarios_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/08 - usuario.png"))); // NOI18N
+        jMnuUsuarios_ebg.setMnemonic('U');
+        jMnuUsuarios_ebg.setText("Usuários");
+        jMnuUsuarios_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuUsuarios_ebgActionPerformed(evt);
+            }
+        });
+        jMnuPrincipal_ebg.add(jMnuUsuarios_ebg);
+
+        jMenuCartao_ebg.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuCartao_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/11 - cartao.png"))); // NOI18N
+        jMenuCartao_ebg.setText("Cartão");
+        jMenuCartao_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCartao_ebgActionPerformed(evt);
+            }
+        });
+        jMnuPrincipal_ebg.add(jMenuCartao_ebg);
+
+        jMenuVendedor_ebg.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuVendedor_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/12 - caixa.png"))); // NOI18N
+        jMenuVendedor_ebg.setText("Vendedor");
+        jMenuVendedor_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuVendedor_ebgActionPerformed(evt);
+            }
+        });
+        jMnuPrincipal_ebg.add(jMenuVendedor_ebg);
+
+        jMenuProduto_ebg.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuProduto_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/14 - compra.png"))); // NOI18N
+        jMenuProduto_ebg.setText("Produto");
+        jMnuPrincipal_ebg.add(jMenuProduto_ebg);
+        jMnuPrincipal_ebg.add(jSeparator1);
+
+        jMenuSair_ebg.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuSair_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/03 - exit.png"))); // NOI18N
+        jMenuSair_ebg.setText("Sair");
+        jMenuSair_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSair_ebgActionPerformed(evt);
+            }
+        });
+        jMnuPrincipal_ebg.add(jMenuSair_ebg);
+
+        jMenuBar1.add(jMnuPrincipal_ebg);
+
+        jMnuMovimento_ebg.setText("Movimento");
+
+        jMnuVendas_ebg.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        jMnuVendas_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/13 - venda.png"))); // NOI18N
+        jMnuVendas_ebg.setText("Vendas");
+        jMnuVendas_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuVendas_ebgActionPerformed(evt);
+            }
+        });
+        jMnuMovimento_ebg.add(jMnuVendas_ebg);
+
+        jMenuBar1.add(jMnuMovimento_ebg);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -38,11 +128,47 @@ public class JFrmPrincipal_ebg extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMnuClientes_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuClientes_ebgActionPerformed
+        // TODO add your handling code here:
+        JDlgCliente_ebg jDlgCliente_ebg = new JDlgCliente_ebg(null, true);
+        jDlgCliente_ebg.setVisible(true);
+
+    }//GEN-LAST:event_jMnuClientes_ebgActionPerformed
+
+    private void jMnuUsuarios_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuUsuarios_ebgActionPerformed
+        // TODO add your handling code here:
+        JDlgUsuario_ebg jDlgUsuario_ebg = new JDlgUsuario_ebg(null, true);
+        jDlgUsuario_ebg.setVisible(true);
+    }//GEN-LAST:event_jMnuUsuarios_ebgActionPerformed
+
+    private void jMenuCartao_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCartao_ebgActionPerformed
+        // TODO add your handling code here:
+        JDlgCartao_ebg jDlgCartao_ebg = new JDlgCartao_ebg(null, true);
+        jDlgCartao_ebg.setVisible(true);
+    }//GEN-LAST:event_jMenuCartao_ebgActionPerformed
+
+    private void jMenuVendedor_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendedor_ebgActionPerformed
+        // TODO add your handling code here:
+        JDlgVendedor_ebg jDlgVendedor_ebg = new JDlgVendedor_ebg(null, true);
+        jDlgVendedor_ebg.setVisible(true);
+    }//GEN-LAST:event_jMenuVendedor_ebgActionPerformed
+
+    private void jMenuSair_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSair_ebgActionPerformed
+        System.exit(0);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuSair_ebgActionPerformed
+
+    private void jMnuVendas_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendas_ebgActionPerformed
+        // TODO add your handling code here:
+        JDlgVendas_ebg jDlgVendas_ebg = new JDlgVendas_ebg(null, true);
+        jDlgVendas_ebg.setVisible(true);
+    }//GEN-LAST:event_jMnuVendas_ebgActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,5 +214,16 @@ public class JFrmPrincipal_ebg extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuCartao_ebg;
+    private javax.swing.JMenuItem jMenuProduto_ebg;
+    private javax.swing.JMenuItem jMenuSair_ebg;
+    private javax.swing.JMenuItem jMenuVendedor_ebg;
+    private javax.swing.JMenuItem jMnuClientes_ebg;
+    private javax.swing.JMenu jMnuMovimento_ebg;
+    private javax.swing.JMenu jMnuPrincipal_ebg;
+    private javax.swing.JMenuItem jMnuUsuarios_ebg;
+    private javax.swing.JMenuItem jMnuVendas_ebg;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

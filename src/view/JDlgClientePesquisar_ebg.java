@@ -109,7 +109,7 @@ public class JDlgClientePesquisar_ebg extends javax.swing.JDialog {
     private void jBtnOk_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOk_ebgActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
-        ClienteEbg clienteEbg = ClienteControle_ebg.getBean(rowSel);
+        ClienteEbg clienteEbg = clienteControle_ebg.getBean(rowSel);
         jDlgCliente_ebg.beanView(clienteEbg);
         setVisible(false);
     }//GEN-LAST:event_jBtnOk_ebgActionPerformed

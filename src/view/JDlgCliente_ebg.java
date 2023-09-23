@@ -6,9 +6,7 @@
 package view;
 
 import bean.ClienteEbg;
-import bean.UsuarioEbg;
 import dao.Cliente_DAO;
-import dao.Usuario_DAO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
@@ -23,18 +21,22 @@ import tools.Util_ebg;
  */
 public class JDlgCliente_ebg extends javax.swing.JDialog {
     private boolean incluindo;
+    
     private MaskFormatter mascaraCpf, mascaraCelular,mascaraNascimento, mascaraRg, mascaraCep, mascaraNumero;
-    /**
-     * Creates new form JDlgCliente
-     */
-    public JDlgCliente_ebg(java.awt.Frame parent, boolean modal) {
+    public ClienteEbg clienteEbg;
+    public Cliente_DAO cliente_DAO;
+
+    JDlgCliente_ebg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        cliente_DAO = new Cliente_DAO();
+        
         setTitle("Clientes");
         setLocationRelativeTo(null);
         Util_ebg.habilitar(false, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
-    
-         try {
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);    
+        
+        try {
             mascaraCpf = new MaskFormatter("###.###.###-##");
             mascaraRg = new MaskFormatter("#.###.###");
             mascaraCelular = new MaskFormatter("(##)####-####");
@@ -51,30 +53,10 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
          jFmtCep_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraCep));
          jFmtNumero_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraNumero));
     }
-        public void limparCampos() {
-        jTxtCodigo_ebg.setText("");
-        jTxtNome_ebg.setText("");
-        jTxtEmail_ebg.setText("");
-        jFmtRg_ebg.setText("");
-        jFmtCpf_ebg.setText("");
-        jTxtGenero_ebg.setText("");
-        jFmtNascimento_ebg.setText("");
-        jFmtCelular_ebg.setText("");
-        jFmtCep_ebg.setText("");
-        jTxtProfissao_ebg.setText("");
-        jTxtEndereco_ebg.setText("");
-        jFmtNumero_ebg.setText("");
-        jTxtUf_ebg.setText("");
-        jTxtBairro_ebg.setText("");
-        jTxtCidade_ebg.setText("");
-        jTxtComplemento_ebg.setText("");
-        }
-        
         public ClienteEbg viewBean() {
         ClienteEbg clienteEbg = new ClienteEbg();
         
-        int id = Integer.valueOf(jTxtCodigo_ebg.getText());
-        clienteEbg.setIdclienteEbg(id);
+        clienteEbg.setIdclienteEbg(Util_ebg.strInt(jTxtCodigo_ebg.getText()));
         clienteEbg.setNomeEbg(jTxtNome_ebg.getText());
         clienteEbg.setGeneroEbg(jTxtGenero_ebg.getText());clienteEbg.setProfissaoEbg(jTxtProfissao_ebg.getText());
         
@@ -82,7 +64,7 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
         try {
             clienteEbg.setNascimentoEbg (formato.parse(jFmtNascimento_ebg.getText()));
         } catch (ParseException ex) {
-            Logger.getLogger(JDlgUsuario_ebg.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JDlgCliente_ebg.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         clienteEbg.setRgEbg(jFmtRg_ebg.getText());
@@ -487,18 +469,19 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
     private void jBtnExcluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_ebgActionPerformed
         // TODO add your handling code here:
         if (Util_ebg.perguntar("Deseja excluir o projeto?") == true){
-
+            clienteEbg = viewBean();
+            cliente_DAO.delete(clienteEbg);
+            Util_ebg.mensagem("Exclusão executada com sucesso.");
             }else {
                 Util_ebg.mensagem("Exclusão cancelada.");
             }
+        Util_ebg.habilitar(false, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
     }//GEN-LAST:event_jBtnExcluir_ebgActionPerformed
 
     private void jBtnConfirmar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmar_ebgActionPerformed
         // TODO add your handling code here:
-       ClienteEbg clienteEbg = viewBean();
-
-        Cliente_DAO cliente_DAO = new Cliente_DAO();
-        cliente_DAO.insert(clienteEbg);
+        clienteEbg = viewBean();
 
         if (incluindo == true) {
             cliente_DAO.insert(clienteEbg);
@@ -508,14 +491,14 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
 
         Util_ebg.habilitar(false, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
-        limparCampos();
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
     }//GEN-LAST:event_jBtnConfirmar_ebgActionPerformed
 
     private void jBtnCancelar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_ebgActionPerformed
         // TODO add your handling code here:
         Util_ebg.habilitar(false, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
-        limparCampos();
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.mensagem("Operação cancelada");
     }//GEN-LAST:event_jBtnCancelar_ebgActionPerformed
 
@@ -555,13 +538,14 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
         JDlgClientePesquisar_ebg jDlgClientePesquisar_ebg = new JDlgClientePesquisar_ebg(null, true);
         jDlgClientePesquisar_ebg.setTelaAnterior(this);
         jDlgClientePesquisar_ebg.setVisible(true);
+        Util_ebg.habilitar(true, jBtnCancelar_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg);
     }//GEN-LAST:event_jBtnPesquisar_ebgActionPerformed
 
     private void jBtnIncluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_ebgActionPerformed
         // TODO add your handling code here:
         Util_ebg.habilitar(true, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.habilitar(false, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
-        limparCampos();
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         incluindo = true;;
     }//GEN-LAST:event_jBtnIncluir_ebgActionPerformed
 

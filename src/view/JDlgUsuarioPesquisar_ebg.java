@@ -118,7 +118,7 @@ public class JDlgUsuarioPesquisar_ebg extends javax.swing.JDialog {
 
     private void jBtnCancelar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_ebgActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        this.hide();
     }//GEN-LAST:event_jBtnCancelar_ebgActionPerformed
 
     /**

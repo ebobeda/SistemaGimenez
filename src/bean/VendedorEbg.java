@@ -30,8 +30,6 @@ public class VendedorEbg  implements java.io.Serializable {
      private String celularEbg;
      private Date dataexpedienteEbg;
      private String comissaoEbg;
-     private Set vendaEbgs = new HashSet(0);
-     private Set vendaprodutoEbgs = new HashSet(0);
 
     public VendedorEbg() {
     }
@@ -45,16 +43,7 @@ public class VendedorEbg  implements java.io.Serializable {
         this.dataexpedienteEbg = dataexpedienteEbg;
         this.comissaoEbg = comissaoEbg;
     }
-    public VendedorEbg(int idvendedorEbg, String nomeEbg, String cpfEbg, String celularEbg, Date dataexpedienteEbg, String comissaoEbg, Set vendaEbgs, Set vendaprodutoEbgs) {
-       this.idvendedorEbg = idvendedorEbg;
-       this.nomeEbg = nomeEbg;
-       this.cpfEbg = cpfEbg;
-       this.celularEbg = celularEbg;
-       this.dataexpedienteEbg = dataexpedienteEbg;
-       this.comissaoEbg = comissaoEbg;
-       this.vendaEbgs = vendaEbgs;
-       this.vendaprodutoEbgs = vendaprodutoEbgs;
-    }
+    
    
      @Id 
 
@@ -117,27 +106,6 @@ public class VendedorEbg  implements java.io.Serializable {
     public void setComissaoEbg(String comissaoEbg) {
         this.comissaoEbg = comissaoEbg;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vendedorEbg")
-    public Set getVendaEbgs() {
-        return this.vendaEbgs;
-    }
-    
-    public void setVendaEbgs(Set vendaEbgs) {
-        this.vendaEbgs = vendaEbgs;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vendedorEbg")
-    public Set getVendaprodutoEbgs() {
-        return this.vendaprodutoEbgs;
-    }
-    
-    public void setVendaprodutoEbgs(Set vendaprodutoEbgs) {
-        this.vendaprodutoEbgs = vendaprodutoEbgs;
-    }
-
-
-
 
 }
 

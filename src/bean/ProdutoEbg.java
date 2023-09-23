@@ -29,7 +29,6 @@ public class ProdutoEbg  implements java.io.Serializable {
      private int modoEbg;
      private int tamanhoEbg;
      private int retirarEbg;
-     private Set vendaprodutoEbgs = new HashSet(0);
 
     public ProdutoEbg() {
     }
@@ -44,17 +43,6 @@ public class ProdutoEbg  implements java.io.Serializable {
         this.modoEbg = modoEbg;
         this.tamanhoEbg = tamanhoEbg;
         this.retirarEbg = retirarEbg;
-    }
-    public ProdutoEbg(int idprodutoEbg, String valorunitEbg, String saborEbg, String unidadeEbg, int massaEbg, int modoEbg, int tamanhoEbg, int retirarEbg, Set vendaprodutoEbgs) {
-       this.idprodutoEbg = idprodutoEbg;
-       this.valorunitEbg = valorunitEbg;
-       this.saborEbg = saborEbg;
-       this.unidadeEbg = unidadeEbg;
-       this.massaEbg = massaEbg;
-       this.modoEbg = modoEbg;
-       this.tamanhoEbg = tamanhoEbg;
-       this.retirarEbg = retirarEbg;
-       this.vendaprodutoEbgs = vendaprodutoEbgs;
     }
    
      @Id 
@@ -138,19 +126,6 @@ public class ProdutoEbg  implements java.io.Serializable {
     public void setRetirarEbg(int retirarEbg) {
         this.retirarEbg = retirarEbg;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="produtoEbg")
-    public Set getVendaprodutoEbgs() {
-        return this.vendaprodutoEbgs;
-    }
-    
-    public void setVendaprodutoEbgs(Set vendaprodutoEbgs) {
-        this.vendaprodutoEbgs = vendaprodutoEbgs;
-    }
-
-
-
-
 }
 
 

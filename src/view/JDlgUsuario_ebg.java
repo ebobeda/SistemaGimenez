@@ -28,6 +28,8 @@ public class JDlgUsuario_ebg extends javax.swing.JDialog {
 
     private boolean incluindo;
     private MaskFormatter mascaraCpf, mascaraNascimento;
+    public UsuarioEbg usuarioEbg;
+    public Usuario_DAO usuario_DAO;
 
     /**
      * Creates new form JDlgUsuario_ebg
@@ -35,10 +37,13 @@ public class JDlgUsuario_ebg extends javax.swing.JDialog {
     public JDlgUsuario_ebg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Usuários");
+        usuario_DAO = new Usuario_DAO();
+        
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtApelido_ebg, jFmtNascimento_ebg, jPwfSenha_ebg, jChbAtivo_ebg, jCboNivel_ebg);
+        Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
+        
+        setTitle("Cadastro de usuários");
         setLocationRelativeTo(null);
-        Util_ebg.habilitar(false, jTxtCodigo_ebg, jTxtNome_ebg, jTxtApelido_ebg,jFmtCpf_ebg, jFmtNascimento_ebg, jPwfSenha_ebg, jChbAtivo_ebg, jCboNivel_ebg, jBtnCancelar_ebg, jBtnConfirmar_ebg);
-        //  desabilitar();
 
         try {
             mascaraCpf = new MaskFormatter("###.###.###-##");
@@ -48,43 +53,19 @@ public class JDlgUsuario_ebg extends javax.swing.JDialog {
         }
         jFmtCpf_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
         jFmtNascimento_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraNascimento));
-    }
-
-
-    public void limparCampos() {
-        jTxtCodigo_ebg.setText("");
-        jTxtNome_ebg.setText("");
-        jTxtApelido_ebg.setText("");
-        jFmtCpf_ebg.setText("");
-        jFmtNascimento_ebg.setText("");
-        jPwfSenha_ebg.setText("");
-        jCboNivel_ebg.setSelectedIndex(-1);
-        jChbAtivo_ebg.setSelected(false);
+   
     }
 
     public UsuarioEbg viewBean() {
         UsuarioEbg usuarioEbg = new UsuarioEbg();
 
-        int id = Integer.valueOf(jTxtCodigo_ebg.getText());
-        usuarioEbg.setIdusuarioEbg(id);
+        usuarioEbg.setIdusuarioEbg(Util_ebg.strInt(jTxtCodigo_ebg.getText()));
         usuarioEbg.setNomeEbg(jTxtNome_ebg.getText());
         usuarioEbg.setApelidoEbg(jTxtApelido_ebg.getText());
         usuarioEbg.setCpfEbg(jFmtCpf_ebg.getText());
-
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            usuarioEbg.setNascimentoEbg(formato.parse(jFmtNascimento_ebg.getText()));
-        } catch (ParseException ex) {
-            Logger.getLogger(JDlgUsuario_ebg.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        usuarioEbg.setNascimentoEbg(Util_ebg.StrDate(jFmtNascimento_ebg.getText()));
         usuarioEbg.setNivelEbg(jCboNivel_ebg.getSelectedIndex());
-
-        if (jChbAtivo_ebg.isSelected() == true) {
-            usuarioEbg.setAtivoEbg("S");
-        } else {
-            usuarioEbg.setAtivoEbg("N");
-        }
+        usuarioEbg.setAtivoEbg( jChbAtivo_ebg.isSelected() == true ? "S" : "N");
         usuarioEbg.setSenhaEbg(jPwfSenha_ebg.getText());
 
         return usuarioEbg;
@@ -92,16 +73,15 @@ public class JDlgUsuario_ebg extends javax.swing.JDialog {
     }
 
     public void beanView(UsuarioEbg usuarioEbg) {
-        String valor = String.valueOf(usuarioEbg.getIdusuarioEbg());
+        String id = String.valueOf(usuarioEbg.getIdusuarioEbg());
 
-        jTxtCodigo_ebg.setText(valor);
+        jTxtCodigo_ebg.setText(id);
         jTxtNome_ebg.setText(usuarioEbg.getNomeEbg());
         jTxtApelido_ebg.setText(usuarioEbg.getApelidoEbg());
         jFmtCpf_ebg.setText(usuarioEbg.getCpfEbg());
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         jFmtNascimento_ebg.setText(formato.format(usuarioEbg.getNascimentoEbg()));
         jCboNivel_ebg.setSelectedIndex(usuarioEbg.getNivelEbg()); //nao deu erro pq no bd nivel é inteiro, o index pega o indice corrente e peg os itens do nivel
-        jPwfSenha_ebg.setText(usuarioEbg.getSenhaEbg());
         
         if (usuarioEbg.getAtivoEbg().equals("S") == true) {
             jChbAtivo_ebg.setSelected(true);
@@ -345,10 +325,10 @@ public class JDlgUsuario_ebg extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnPesquisar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisar_ebgActionPerformed
-
         JDlgUsuarioPesquisar_ebg jDlgUsuarioPesquisar_ebg = new JDlgUsuarioPesquisar_ebg(null, true);
         jDlgUsuarioPesquisar_ebg.setTelaAnterior(this);
         jDlgUsuarioPesquisar_ebg.setVisible(true);
+        Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
     }//GEN-LAST:event_jBtnPesquisar_ebgActionPerformed
 
     private void jPwfSenha_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPwfSenha_ebgActionPerformed
@@ -380,7 +360,7 @@ public class JDlgUsuario_ebg extends javax.swing.JDialog {
         //habilitar();
         Util_ebg.habilitar(true, jTxtCodigo_ebg, jTxtNome_ebg, jTxtApelido_ebg, jBtnCancelar_ebg, jFmtNascimento_ebg, jPwfSenha_ebg, jChbAtivo_ebg, jCboNivel_ebg, jBtnCancelar_ebg, jBtnConfirmar_ebg, jFmtCpf_ebg);
         Util_ebg.habilitar(false, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
-        limparCampos();
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtApelido_ebg, jFmtNascimento_ebg, jPwfSenha_ebg, jChbAtivo_ebg, jCboNivel_ebg);
         incluindo = true;
     }//GEN-LAST:event_jBtnIncluir_ebgActionPerformed
 
@@ -399,7 +379,9 @@ public class JDlgUsuario_ebg extends javax.swing.JDialog {
     private void jBtnExcluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_ebgActionPerformed
  
             if (Util_ebg.perguntar("Deseja excluir o projeto?") == true){
-
+            usuarioEbg = viewBean();
+            usuario_DAO.delete(usuarioEbg);
+            Util_ebg.mensagem("Exclusão executada com sucesso.");
             }else {
                 Util_ebg.mensagem("Exclusão cancelada.");
             }
@@ -408,12 +390,7 @@ public class JDlgUsuario_ebg extends javax.swing.JDialog {
     private void jBtnConfirmar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmar_ebgActionPerformed
         // TODO add your handling code here:
         //desabilitar();
-
-        UsuarioEbg usuarioEbg = viewBean();
-
-        Usuario_DAO usuario_DAO = new Usuario_DAO();
-        usuario_DAO.insert(usuarioEbg);
-
+        usuarioEbg = viewBean();
         if (incluindo == true) {
             usuario_DAO.insert(usuarioEbg);
         } else {
@@ -422,7 +399,7 @@ public class JDlgUsuario_ebg extends javax.swing.JDialog {
 
         Util_ebg.habilitar(false, jTxtCodigo_ebg, jTxtNome_ebg, jTxtApelido_ebg, jBtnCancelar_ebg, jFmtNascimento_ebg, jPwfSenha_ebg, jChbAtivo_ebg, jCboNivel_ebg, jBtnCancelar_ebg, jBtnConfirmar_ebg, jFmtCpf_ebg);
         Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
-        limparCampos();
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtApelido_ebg, jFmtNascimento_ebg, jPwfSenha_ebg, jChbAtivo_ebg, jCboNivel_ebg);
     }//GEN-LAST:event_jBtnConfirmar_ebgActionPerformed
 
     private void jBtnCancelar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_ebgActionPerformed
@@ -430,7 +407,7 @@ public class JDlgUsuario_ebg extends javax.swing.JDialog {
         //desabilitar();
         Util_ebg.habilitar(false, jTxtCodigo_ebg, jTxtNome_ebg, jTxtApelido_ebg, jBtnCancelar_ebg, jFmtNascimento_ebg, jPwfSenha_ebg, jChbAtivo_ebg, jCboNivel_ebg, jBtnCancelar_ebg, jBtnConfirmar_ebg, jFmtCpf_ebg);
         Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
-        limparCampos();
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtApelido_ebg, jFmtNascimento_ebg, jPwfSenha_ebg, jChbAtivo_ebg, jCboNivel_ebg);
         Util_ebg.mensagem("Operação cancelada");
     }//GEN-LAST:event_jBtnCancelar_ebgActionPerformed
 

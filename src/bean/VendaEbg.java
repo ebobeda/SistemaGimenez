@@ -31,7 +31,6 @@ public class VendaEbg  implements java.io.Serializable {
      private VendedorEbg vendedorEbg;
      private Date dataEbg;
      private String totalvendaEbg;
-     private Set vendaprodutoEbgs = new HashSet(0);
 
     public VendaEbg() {
     }
@@ -44,15 +43,6 @@ public class VendaEbg  implements java.io.Serializable {
         this.dataEbg = dataEbg;
         this.totalvendaEbg = totalvendaEbg;
     }
-    public VendaEbg(int idvendaEbg, ClienteEbg clienteEbg, VendedorEbg vendedorEbg, Date dataEbg, String totalvendaEbg, Set vendaprodutoEbgs) {
-       this.idvendaEbg = idvendaEbg;
-       this.clienteEbg = clienteEbg;
-       this.vendedorEbg = vendedorEbg;
-       this.dataEbg = dataEbg;
-       this.totalvendaEbg = totalvendaEbg;
-       this.vendaprodutoEbgs = vendaprodutoEbgs;
-    }
-   
      @Id 
 
     
@@ -104,19 +94,6 @@ public class VendaEbg  implements java.io.Serializable {
     public void setTotalvendaEbg(String totalvendaEbg) {
         this.totalvendaEbg = totalvendaEbg;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vendaEbg")
-    public Set getVendaprodutoEbgs() {
-        return this.vendaprodutoEbgs;
-    }
-    
-    public void setVendaprodutoEbgs(Set vendaprodutoEbgs) {
-        this.vendaprodutoEbgs = vendaprodutoEbgs;
-    }
-
-
-
-
 }
 
 

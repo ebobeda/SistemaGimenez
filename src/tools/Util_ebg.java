@@ -5,6 +5,8 @@
  */
 package tools;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -24,7 +26,7 @@ public class Util_ebg {
         }
     }
 
-    public void limparCampos(JComponent... vetComp) { //limpar campos é polimorffismo
+    public static void limparCampos(JComponent... vetComp) { //limpar campos é polimorffismo
         for (JComponent componente : vetComp) {
             if (componente instanceof JTextField) { //if pergunta se alguma vez ele já foi textfield
                 ((JTextField) componente).setText("");
@@ -72,10 +74,17 @@ public class Util_ebg {
     }
     
     public static Date StrDate(String cad){
-        return null;
-    }
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+            return formato.parse(cad);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    };
     
-    public static Date dateStr(String num){
-        return null;
+    public static String dateStr(Date date){
+        SimpleDateFormat formataNascimento = new SimpleDateFormat("dd/MM/yyyy");
+        return formataNascimento.format(date);
     }
 }

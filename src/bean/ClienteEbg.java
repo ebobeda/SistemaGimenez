@@ -40,7 +40,6 @@ public class ClienteEbg  implements java.io.Serializable {
      private String cidadeEbg;
      private String ufEbg;
      private String complementoEbg;
-     private Set vendaEbgs = new HashSet(0);
 
     public ClienteEbg() {
     }
@@ -64,25 +63,7 @@ public class ClienteEbg  implements java.io.Serializable {
         this.ufEbg = ufEbg;
         this.complementoEbg = complementoEbg;
     }
-    public ClienteEbg(int idclienteEbg, String nomeEbg, String generoEbg, String profissaoEbg, Date nascimentoEbg, String rgEbg, String cpfEbg, String emailEbg, String celularEbg, String cepEbg, String enderecoEbg, String numeroEbg, String bairroEbg, String cidadeEbg, String ufEbg, String complementoEbg, Set vendaEbgs) {
-       this.idclienteEbg = idclienteEbg;
-       this.nomeEbg = nomeEbg;
-       this.generoEbg = generoEbg;
-       this.profissaoEbg = profissaoEbg;
-       this.nascimentoEbg = nascimentoEbg;
-       this.rgEbg = rgEbg;
-       this.cpfEbg = cpfEbg;
-       this.emailEbg = emailEbg;
-       this.celularEbg = celularEbg;
-       this.cepEbg = cepEbg;
-       this.enderecoEbg = enderecoEbg;
-       this.numeroEbg = numeroEbg;
-       this.bairroEbg = bairroEbg;
-       this.cidadeEbg = cidadeEbg;
-       this.ufEbg = ufEbg;
-       this.complementoEbg = complementoEbg;
-       this.vendaEbgs = vendaEbgs;
-    }
+   
    
      @Id 
 
@@ -245,17 +226,6 @@ public class ClienteEbg  implements java.io.Serializable {
     public void setComplementoEbg(String complementoEbg) {
         this.complementoEbg = complementoEbg;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="clienteEbg")
-    public Set getVendaEbgs() {
-        return this.vendaEbgs;
-    }
-    
-    public void setVendaEbgs(Set vendaEbgs) {
-        this.vendaEbgs = vendaEbgs;
-    }
-
-
 
 
 }
