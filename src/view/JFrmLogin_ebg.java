@@ -13,8 +13,7 @@ import tools.Util_ebg;
  * @author user
  */
 public class JFrmLogin_ebg extends javax.swing.JFrame {
-    String usuario = "Estefani";
-    String senha = "12345";
+
     JFrmPrincipal_ebg JFrmPrincipal_ebg = new JFrmPrincipal_ebg();
     
     public JFrmLogin_ebg() {
