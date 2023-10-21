@@ -7,6 +7,7 @@ package dao;
 
 import bean.UsuarioEbg;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
@@ -15,6 +16,21 @@ import org.hibernate.criterion.Restrictions;
  * @author u08004655122
  */
 public class Usuario_DAO extends DAO_Abstract{
+    
+    public UsuarioEbg LoginApelidoESenha(String apelido, String senha) {
+        session.beginTransaction();
+
+        Query query = session.createQuery("FROM UsuarioEbg WHERE apelido_ebg = :apelido_ebg AND senha_ebg = :senha_ebg"); //consulta no hibernate do usuario e da senha
+        query.setParameter("apelido_ebg", apelido); //apelido_ebg é o parametro da consulta :apelido_ebg, setParameter atribui valor ao parametro antes de executar a consulta pra ver se os apelidos batem
+        query.setParameter("senha_ema", senha);
+
+        UsuarioEbg usuarioEbg = (UsuarioEbg) query.uniqueResult();//procura apenas um resultado
+
+        session.getTransaction().commit(); //todas as operacoes com banco de dados precisam de transacao com hibernate
+
+
+        return usuarioEbg;
+    }
 
     @Override
     public void insert(Object object) {

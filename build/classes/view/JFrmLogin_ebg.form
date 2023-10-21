@@ -27,12 +27,12 @@
               <EmptySpace min="0" pref="63" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel2" min="-2" pref="52" max="-2" attributes="0"/>
-                  <Component id="jTxtUsuario" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jTxtUsuario_ebg" min="-2" pref="141" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel3" min="-2" pref="51" max="-2" attributes="0"/>
-                  <Component id="jPswSenha" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="jPswSenha_ebg" min="-2" pref="141" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
           </Group>
@@ -65,8 +65,8 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTxtUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPswSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTxtUsuario_ebg" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPswSenha_ebg" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="62" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -95,7 +95,7 @@
         <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTxtUsuario">
+    <Component class="javax.swing.JTextField" name="jTxtUsuario_ebg">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -105,7 +105,7 @@
         <Property name="text" type="java.lang.String" value="Senha"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="jPswSenha">
+    <Component class="javax.swing.JPasswordField" name="jPswSenha_ebg">
     </Component>
     <Component class="javax.swing.JButton" name="jBtnConfirmar">
       <Properties>

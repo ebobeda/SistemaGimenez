@@ -5,19 +5,23 @@
  */
 package view;
 
+import dao.Usuario_DAO;
+import tools.Util_ebg;
+
 /**
  *
  * @author user
  */
-public class Login_ebg extends javax.swing.JFrame {
+public class JFrmLogin_ebg extends javax.swing.JFrame {
     String usuario = "Estefani";
     String senha = "12345";
     JFrmPrincipal_ebg JFrmPrincipal_ebg = new JFrmPrincipal_ebg();
+    
     public JFrmLogin_ebg() {
                initComponents();
         setLocationRelativeTo(null);
     }
-
+    private int contadorTentativas = 0; 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,9 +33,9 @@ public class Login_ebg extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTxtUsuario = new javax.swing.JTextField();
+        jTxtUsuario_ebg = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPswSenha = new javax.swing.JPasswordField();
+        jPswSenha_ebg = new javax.swing.JPasswordField();
         jBtnConfirmar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -72,11 +76,11 @@ public class Login_ebg extends javax.swing.JFrame {
                 .addGap(0, 63, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtUsuario_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPswSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPswSenha_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -101,8 +105,8 @@ public class Login_ebg extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPswSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtUsuario_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPswSenha_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnConfirmar)
@@ -115,24 +119,24 @@ public class Login_ebg extends javax.swing.JFrame {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-        String apelido = jTxtUsuario.getText();
-        String senha = new String(jPswSenha.getPassword());
+        String apelido = jTxtUsuario_ebg.getText();
+        String senha = new String(jPswSenha_ebg.getPassword());
 
         Usuario_DAO usuario_DAO = new Usuario_DAO();
 
         if (usuario_DAO.LoginApelidoESenha(apelido, senha) != null) {
-            JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!");
+            Util_ebg.mensagem("Usuário logado com sucesso!");
 
-            JFrmPrincipal jFrmPrincipal = new JFrmPrincipal();
-            jFrmPrincipal.setVisible(true);
+            JFrmPrincipal_ebg jFrmPrincipal_ebg = new JFrmPrincipal_ebg();
+            jFrmPrincipal_ebg.setVisible(true);
 
             contadorTentativas = 0;
         } else {
             contadorTentativas++;
-            JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválidos! Tentativa " + contadorTentativas + "/3");
+            Util_ebg.mensagem("Usuário e/ou senha inválidos! Tentativa " + contadorTentativas + "/3");
 
             if (contadorTentativas >= 3) {
-                JOptionPane.showMessageDialog(null, "O número máximo de tentativas foi excedido, programa será encerrado.");
+                Util_ebg.mensagem("O número máximo de tentativas foi excedido, programa será encerrado.");
                 System.exit(0);
             }
         }
@@ -160,21 +164,23 @@ public class Login_ebg extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrmLogin_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrmLogin_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrmLogin_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrmLogin_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login_ebg().setVisible(true);
+                new JFrmLogin_ebg().setVisible(true);
             }
         });
     }
@@ -185,7 +191,7 @@ public class Login_ebg extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPswSenha;
-    private javax.swing.JTextField jTxtUsuario;
+    private javax.swing.JPasswordField jPswSenha_ebg;
+    private javax.swing.JTextField jTxtUsuario_ebg;
     // End of variables declaration//GEN-END:variables
 }

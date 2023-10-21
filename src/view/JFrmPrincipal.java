@@ -9,16 +9,17 @@ package view;
  *
  * @author user
  */
-public class JFrmPrincipal_ebg extends javax.swing.JFrame {
-       
+public class JFrmPrincipal extends javax.swing.JDialog {
+
     /**
-     * Creates new form JFrmPrincipal_ebg
+     * Creates new form JFrmPrincipal
      */
-    public JFrmPrincipal_ebg() {
-         initComponents();
+    public JFrmPrincipal(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
         setTitle("Tela Principal");
-        setExtendedState(MAXIMIZED_BOTH);
-}
+        setLocationRelativeTo(null);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,8 +40,8 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JToolBar.Separator();
         jBtnToolVendedor_ebg = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
-        jSeparator7 = new javax.swing.JToolBar.Separator();
         jBtnToolProduto_ebg = new javax.swing.JButton();
+        jSeparator7 = new javax.swing.JToolBar.Separator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMnuPrincipal_ebg = new javax.swing.JMenu();
         jMnuClientes_ebg = new javax.swing.JMenuItem();
@@ -53,7 +54,7 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         jMnuMovimento_ebg = new javax.swing.JMenu();
         jMnuVendas_ebg = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -118,7 +119,6 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         });
         jToolBar1.add(jBtnToolVendedor_ebg);
         jToolBar1.add(jSeparator6);
-        jToolBar1.add(jSeparator7);
 
         jBtnToolProduto_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/14 - compra.png"))); // NOI18N
         jBtnToolProduto_ebg.setFocusable(false);
@@ -133,6 +133,7 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(jBtnToolProduto_ebg);
+        jToolBar1.add(jSeparator7);
 
         jMnuPrincipal_ebg.setMnemonic('P');
         jMnuPrincipal_ebg.setText("Principal");
@@ -227,7 +228,7 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 69, Short.MAX_VALUE))
+                .addGap(0, 83, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,6 +238,7 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         // TODO add your handling code here:
         JDlgCliente_ebg jDlgCliente_ebg = new JDlgCliente_ebg(null, true);
         jDlgCliente_ebg.setVisible(true);
+
     }//GEN-LAST:event_jMnuClientes_ebgActionPerformed
 
     private void jMenuUsuarios_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUsuarios_ebgActionPerformed
@@ -256,11 +258,6 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         JDlgVendedor_ebg jDlgVendedor_ebg = new JDlgVendedor_ebg(null, true);
         jDlgVendedor_ebg.setVisible(true);
     }//GEN-LAST:event_jMenuVendedor_ebgActionPerformed
-
-    private void jMenuProduto_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProduto_ebgActionPerformed
-        JDlgProduto_ebg jDlgProduto_ebg = new JDlgProduto_ebg(null, true);
-        jDlgProduto_ebg.setVisible(true);
-    }//GEN-LAST:event_jMenuProduto_ebgActionPerformed
 
     private void jMenuSair_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSair_ebgActionPerformed
         System.exit(0);
@@ -298,6 +295,11 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         jDlgProduto_ebg.setVisible(true);
     }//GEN-LAST:event_jBtnToolProduto_ebgActionPerformed
 
+    private void jMenuProduto_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProduto_ebgActionPerformed
+        JDlgProduto_ebg jDlgProduto_ebg = new JDlgProduto_ebg(null, true);
+        jDlgProduto_ebg.setVisible(true);
+    }//GEN-LAST:event_jMenuProduto_ebgActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -315,20 +317,30 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrmPrincipal_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrmPrincipal_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrmPrincipal_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrmPrincipal_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrmPrincipal_ebg().setVisible(true);
+                JFrmPrincipal dialog = new JFrmPrincipal(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

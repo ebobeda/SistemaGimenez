@@ -28,7 +28,7 @@ public class JDlgVendedor_ebg extends javax.swing.JDialog {
     public JDlgVendedor_ebg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Inclusão");
+        setTitle("Cadastro de Vendedores");
         setLocationRelativeTo(null);
         jDlgVendedorNovoIA = new JDlgVendedorNovoIA(null, true);
         vendedorControle_ebg = new VendedorControle_ebg();

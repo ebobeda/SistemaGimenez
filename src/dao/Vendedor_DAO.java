@@ -5,6 +5,7 @@
  */
 package dao;
 
+import bean.VendedorEbg;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -43,7 +44,7 @@ public class Vendedor_DAO extends DAO_Abstract{
     @Override
     public Object list(int id) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Vendedor_DAO.class); //importar do bean e do hibernate; criteria é pra fazer select * from na O.O
+        Criteria criteria = session.createCriteria(VendedorEbg.class); //importar do bean e do hibernate; criteria é pra fazer select * from na O.O
         criteria.add(Restrictions.eq("idusuarios", id)); //é um método estático; id é o parametro da linha 46
         List lista = criteria.list();
         session.getTransaction().commit();
@@ -53,7 +54,7 @@ public class Vendedor_DAO extends DAO_Abstract{
     @Override
     public List listAll() {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Vendedor_DAO.class); //importar do bean e do hibernate; criteria é pra fazer select * from na O.O
+        Criteria criteria = session.createCriteria(VendedorEbg.class); //importar do bean e do hibernate; criteria é pra fazer select * from na O.O
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista; //registros no java sao transformados em bean; nao precisa do array pq mudou na linha 50 só pra list
