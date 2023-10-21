@@ -5,12 +5,22 @@
  */
 package view;
 
+import tools.Util_ebg;
+import bean.CartaoEbg;
+import dao.Cartao_DAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
+
 /**
  *
  * @author user
  */
 public class JDlgCartaoNovoIA extends javax.swing.JDialog {
-
+    private MaskFormatter mascaraCPF, mascaraCsc, mascaraValidade;
     /**
      * Creates new form JDlgCartaoNovoIA
      */
@@ -19,6 +29,48 @@ public class JDlgCartaoNovoIA extends javax.swing.JDialog {
         initComponents();
         setTitle("Inclusão");
         setLocationRelativeTo(null);
+        
+        try {
+            mascaraCPF = new MaskFormatter("###.###.###-##");
+            mascaraCsc = new MaskFormatter("###");
+            mascaraValidade = new MaskFormatter("##/##/####");
+        } catch (ParseException ex) {
+            Logger.getLogger(JDlgCartaoNovoIA.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
+         jFmtCpf_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraCPF));
+         jFmtCsc_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraCsc));
+         jFmtValidade_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraValidade));
+    
+}
+
+    public CartaoEbg viewBean() {
+        CartaoEbg cartaoEbg = new CartaoEbg();
+        
+        cartaoEbg.setIdcartaoEbg(Util_ebg.strInt(jTxtCodigo_ebg.getText()));
+        cartaoEbg.setNomecompletoEbg(jTxtNomecompleto_ebg.getText());
+        cartaoEbg.setCpfEbg(jFmtCpf_ebg.getText());
+        cartaoEbg.setNumerocartaoEbg(jTxtNumerocartao_ebg.getText());
+        cartaoEbg.setCscEbg(jFmtCsc_ebg.getText());
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            cartaoEbg.setValidadeEbg (formato.parse(jFmtValidade_ebg.getText()));
+        } catch (ParseException ex) {
+            Logger.getLogger(JDlgCartao_ebg.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cartaoEbg;
+    }
+    
+    public void beanView (CartaoEbg cartaoEbg){
+        String id = String.valueOf(cartaoEbg.getIdcartaoEbg());
+        
+        jTxtCodigo_ebg.setText(id);
+        jTxtNomecompleto_ebg.setText(cartaoEbg.getNomecompletoEbg());
+        jFmtCpf_ebg.setText(cartaoEbg.getCpfEbg());
+        jTxtNumerocartao_ebg.setText(cartaoEbg.getNumerocartaoEbg());
+        jFmtCsc_ebg.setText(cartaoEbg.getCscEbg());
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+        jFmtValidade_ebg.setText(formato.format(cartaoEbg.getValidadeEbg()));
     }
 
     /**
@@ -32,19 +84,19 @@ public class JDlgCartaoNovoIA extends javax.swing.JDialog {
 
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTxtNumeroCartao = new javax.swing.JTextField();
-        jFmtValidade = new javax.swing.JFormattedTextField();
+        jTxtNumerocartao_ebg = new javax.swing.JTextField();
+        jFmtValidade_ebg = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTxtCodigo = new javax.swing.JTextField();
+        jTxtCodigo_ebg = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTxtNomeCompleto = new javax.swing.JTextField();
+        jTxtNomecompleto_ebg = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jFmtCpf = new javax.swing.JFormattedTextField();
-        jFmtCsc = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         jBtnOk_ebg = new javax.swing.JButton();
         jBtnCancelar_ebg = new javax.swing.JButton();
+        jFmtCsc_ebg = new javax.swing.JFormattedTextField();
+        jFmtCpf_ebg = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -52,25 +104,25 @@ public class JDlgCartaoNovoIA extends javax.swing.JDialog {
 
         jLabel3.setText("Data de validade");
 
-        jFmtValidade.addActionListener(new java.awt.event.ActionListener() {
+        jFmtValidade_ebg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFmtValidadeActionPerformed(evt);
+                jFmtValidade_ebgActionPerformed(evt);
             }
         });
 
         jLabel6.setText("Código");
 
-        jTxtCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTxtCodigo_ebg.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTxtCodigoFocusGained(evt);
+                jTxtCodigo_ebgFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTxtCodigoFocusLost(evt);
+                jTxtCodigo_ebgFocusLost(evt);
             }
         });
-        jTxtCodigo.addActionListener(new java.awt.event.ActionListener() {
+        jTxtCodigo_ebg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtCodigoActionPerformed(evt);
+                jTxtCodigo_ebgActionPerformed(evt);
             }
         });
 
@@ -79,17 +131,6 @@ public class JDlgCartaoNovoIA extends javax.swing.JDialog {
         jLabel4.setText("CPF");
 
         jLabel2.setText("CSC");
-
-        try {
-            jFmtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFmtCpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFmtCpfActionPerformed(evt);
-            }
-        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
@@ -114,30 +155,30 @@ public class JDlgCartaoNovoIA extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jFmtCsc, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
+                            .addComponent(jFmtCsc_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                            .addComponent(jFmtValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                            .addComponent(jFmtValidade_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(62, 62, 62))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTxtNomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTxtNumeroCartao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)))
-                .addGap(62, 62, 62))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jFmtCpf_ebg, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTxtNomecompleto_ebg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTxtNumerocartao_ebg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTxtCodigo_ebg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(70, 175, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,27 +186,27 @@ public class JDlgCartaoNovoIA extends javax.swing.JDialog {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtCodigo_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTxtNomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtNomecompleto_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
+                .addComponent(jFmtCpf_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTxtNumeroCartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtNumerocartao_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFmtCsc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFmtValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFmtValidade_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFmtCsc_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -173,33 +214,35 @@ public class JDlgCartaoNovoIA extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFmtValidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtValidadeActionPerformed
+    private void jFmtValidade_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtValidade_ebgActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFmtValidadeActionPerformed
+    }//GEN-LAST:event_jFmtValidade_ebgActionPerformed
 
-    private void jTxtCodigoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtCodigoFocusGained
+    private void jTxtCodigo_ebgFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtCodigo_ebgFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtCodigoFocusGained
+    }//GEN-LAST:event_jTxtCodigo_ebgFocusGained
 
-    private void jTxtCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtCodigoFocusLost
+    private void jTxtCodigo_ebgFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtCodigo_ebgFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtCodigoFocusLost
+    }//GEN-LAST:event_jTxtCodigo_ebgFocusLost
 
-    private void jTxtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoActionPerformed
+    private void jTxtCodigo_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigo_ebgActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtCodigoActionPerformed
-
-    private void jFmtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFmtCpfActionPerformed
+    }//GEN-LAST:event_jTxtCodigo_ebgActionPerformed
 
     private void jBtnOk_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOk_ebgActionPerformed
-        // TODO add your handling code here:
+    CartaoEbg cartaoEbg = viewBean();
+    Cartao_DAO cartao_DAO = new Cartao_DAO();
+    cartao_DAO.insert(cartaoEbg);
+    
+    Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNomecompleto_ebg, jFmtCpf_ebg, jTxtNumerocartao_ebg, jFmtCsc_ebg, jFmtValidade_ebg);
+    Util_ebg.mensagem("Incluido com sucesso!");
     }//GEN-LAST:event_jBtnOk_ebgActionPerformed
 
     private void jBtnCancelar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_ebgActionPerformed
         // TODO add your handling code here:
         setVisible(false);
+        Util_ebg.mensagem("Operação Cancelada!");
     }//GEN-LAST:event_jBtnCancelar_ebgActionPerformed
 
     /**
@@ -247,9 +290,9 @@ public class JDlgCartaoNovoIA extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancelar_ebg;
     private javax.swing.JButton jBtnOk_ebg;
-    private javax.swing.JFormattedTextField jFmtCpf;
-    private javax.swing.JFormattedTextField jFmtCsc;
-    private javax.swing.JFormattedTextField jFmtValidade;
+    private javax.swing.JFormattedTextField jFmtCpf_ebg;
+    private javax.swing.JFormattedTextField jFmtCsc_ebg;
+    private javax.swing.JFormattedTextField jFmtValidade_ebg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -257,8 +300,8 @@ public class JDlgCartaoNovoIA extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTxtCodigo;
-    private javax.swing.JTextField jTxtNomeCompleto;
-    private javax.swing.JTextField jTxtNumeroCartao;
+    private javax.swing.JTextField jTxtCodigo_ebg;
+    private javax.swing.JTextField jTxtNomecompleto_ebg;
+    private javax.swing.JTextField jTxtNumerocartao_ebg;
     // End of variables declaration//GEN-END:variables
 }

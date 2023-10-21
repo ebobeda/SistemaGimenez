@@ -5,6 +5,9 @@
  */
 package view;
 
+import bean.VendedorEbg;
+import dao.Vendedor_DAO;
+import java.util.List;
 import tools.Util_ebg;
 /**
  *
@@ -15,14 +18,24 @@ public class JDlgVendedor_ebg extends javax.swing.JDialog {
     /**
      * Creates new form JDlgCaixa
      */
+
+    VendedorEbg vendedorEbg;
+    Vendedor_DAO vendedor_DAO;
+    VendedorControle_ebg vendedorControle_ebg;
     JDlgVendedorNovoIA jDlgVendedorNovoIA;
-    
+    boolean incluindo;
+     
     public JDlgVendedor_ebg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setTitle("Inclusão");
         setLocationRelativeTo(null);
         jDlgVendedorNovoIA = new JDlgVendedorNovoIA(null, true);
+        vendedorControle_ebg = new VendedorControle_ebg();
+        vendedor_DAO = new Vendedor_DAO();
+        List lista = vendedor_DAO.listAll();
+        vendedorControle_ebg.setList(lista);
+        jTable1.setModel(vendedorControle_ebg);
     }
 
     /**
@@ -105,19 +118,29 @@ public class JDlgVendedor_ebg extends javax.swing.JDialog {
 
     private void jBtnIncluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_ebgActionPerformed
         // TODO add your handling code here:
+        incluindo = true;
+        jDlgVendedorNovoIA.setTitle("Incluir");
         jDlgVendedorNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnIncluir_ebgActionPerformed
 
     private void jBtnAlterar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_ebgActionPerformed
         // TODO add your handling code here:
-        JDlgVendedorNovoIA jDlgVendedorNovoIA = new JDlgVendedorNovoIA(null, true);
+        jDlgVendedorNovoIA.setTitle("Alterar");
         jDlgVendedorNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnAlterar_ebgActionPerformed
 
     private void jBtnExcluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_ebgActionPerformed
         // TODO add your handling code here:
         if(Util_ebg.perguntar("Deseja excuir este vendedor?") == true) {
-        }
+        int sel = jTable1.getSelectedRow();
+        VendedorEbg vendedorEbg = vendedorControle_ebg.getBean(sel);
+        vendedor_DAO.delete(vendedorEbg);
+        
+        List lista = vendedor_DAO.listAll();
+        vendedorControle_ebg.setList(lista);
+        Util_ebg.mensagem("Excluido com sucesso!");
+        }else{
+        Util_ebg.mensagem("Exclusão cancelada!");}
     }//GEN-LAST:event_jBtnExcluir_ebgActionPerformed
 
     /**

@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package view;
+import bean.ProdutoEbg;
+import dao.Produto_DAO;
+import view.ProdutoControle_ebg;
+import java.util.List;
 import tools.Util_ebg;
 /**
  *
@@ -14,14 +18,26 @@ public class JDlgProduto_ebg extends javax.swing.JDialog {
     /**
      * Creates new form JDlgProduto
      */
+    ProdutoEbg produtoEbg;
+    Produto_DAO produto_DAO;
+    ProdutoControle_ebg produtoControle_ebg;
     JDlgProdutoNovoIA jDlgProdutoNovoIA;
+    boolean incluindo;
     
     public JDlgProduto_ebg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setTitle("Inclusão");
         setLocationRelativeTo(null);
+        
         jDlgProdutoNovoIA = new JDlgProdutoNovoIA(null, true);
+        
+        produtoControle_ebg = new ProdutoControle_ebg();
+        produto_DAO = new  Produto_DAO();
+        List lista = produto_DAO.listAll();
+        produtoControle_ebg.setList(lista);
+        jTable1.setModel(produtoControle_ebg);
+        
     }
 
     /**
@@ -104,18 +120,30 @@ public class JDlgProduto_ebg extends javax.swing.JDialog {
 
     private void jBtnIncluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_ebgActionPerformed
         // TODO add your handling code here:
+        incluindo = true;
+        jDlgProdutoNovoIA.setTitle("Incluir");
         jDlgProdutoNovoIA.setVisible(true);
+        
     }//GEN-LAST:event_jBtnIncluir_ebgActionPerformed
 
     private void jBtnAlterar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_ebgActionPerformed
         // TODO add your handling code here:
-        JDlgProdutoNovoIA jDlgProdutoNovoIA = new JDlgProdutoNovoIA(null, true);
+        jDlgProdutoNovoIA.setTitle("Alterar");
         jDlgProdutoNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnAlterar_ebgActionPerformed
 
     private void jBtnExcluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_ebgActionPerformed
         // TODO add your handling code here:
-        if(Util_ebg.perguntar("Deseja excuir este usuário?") == true) {
+        if (Util_ebg.perguntar("Deseja excluir este produto?") == true){
+        int sel = jTable1.getSelectedRow();
+        produtoEbg = produtoControle_ebg.getBean(sel);
+        produto_DAO.delete(produtoEbg);
+           
+        List lista = produto_DAO.listAll();
+        produtoControle_ebg.setList(lista);
+        Util_ebg.mensagem("Registro excluido"); 
+        } else{
+           Util_ebg.mensagem("Exclusão cancelada");
         }
     }//GEN-LAST:event_jBtnExcluir_ebgActionPerformed
 
@@ -144,6 +172,12 @@ public class JDlgProduto_ebg extends javax.swing.JDialog {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JDlgProduto_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

@@ -5,6 +5,9 @@
  */
 package view;
 
+import bean.CartaoEbg;
+import dao.Cartao_DAO;
+import java.util.List;
 import tools.Util_ebg;
 /**
  *
@@ -15,7 +18,12 @@ public class JDlgCartao_ebg extends javax.swing.JDialog {
     /**
      * Creates new form JDlgCartao
      */
+    
+    CartaoEbg cartaoEbg;
+    Cartao_DAO cartao_DAO;
+    CartaoControle_ebg cartaoControle_ebg;
     JDlgCartaoNovoIA jDlgCartaoNovoIA;
+    boolean incluindo;
     
     public JDlgCartao_ebg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -23,6 +31,11 @@ public class JDlgCartao_ebg extends javax.swing.JDialog {
         setTitle("Inclusão");
         setLocationRelativeTo(null);
         jDlgCartaoNovoIA = new JDlgCartaoNovoIA(null, true);
+        cartaoControle_ebg = new CartaoControle_ebg();
+        cartao_DAO = new Cartao_DAO();
+        List lista = cartao_DAO.listAll();
+        cartaoControle_ebg.setList(lista);
+        jTable1.setModel(cartaoControle_ebg);
     }
 
     /**
@@ -104,20 +117,28 @@ public class JDlgCartao_ebg extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnIncluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_ebgActionPerformed
-        // TODO add your handling code here:
+        incluindo = true;
+        jDlgCartaoNovoIA.setTitle("Incluir");
         jDlgCartaoNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnIncluir_ebgActionPerformed
 
     private void jBtnAlterar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_ebgActionPerformed
         // TODO add your handling code here:
-        JDlgCartaoNovoIA jDlgCartaoNovoIA = new JDlgCartaoNovoIA(null, true);
+        jDlgCartaoNovoIA.setTitle("Alterar");
         jDlgCartaoNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnAlterar_ebgActionPerformed
 
     private void jBtnExcluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_ebgActionPerformed
-        // TODO add your handling code here:
         if(Util_ebg.perguntar("Deseja excuir este cartão?") == true) {
-        }
+        int sel = jTable1.getSelectedRow();
+        CartaoEbg cartaoEbg = cartaoControle_ebg.getBean(sel);
+        cartao_DAO.delete(cartaoEbg);
+        
+        List lista = cartao_DAO.listAll();
+        cartaoControle_ebg.setList(lista);
+        Util_ebg.mensagem("Excluido com sucesso!");
+        }else{
+        Util_ebg.mensagem("Exclusão cancelada!");}
     }//GEN-LAST:event_jBtnExcluir_ebgActionPerformed
 
     /**

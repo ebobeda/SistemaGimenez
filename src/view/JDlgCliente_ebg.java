@@ -17,7 +17,7 @@ import tools.Util_ebg;
 
 /**
  *
- * @author user
+ * @author user u08004655122
  */
 public class JDlgCliente_ebg extends javax.swing.JDialog {
     private boolean incluindo;
@@ -31,10 +31,12 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
         initComponents();
         cliente_DAO = new Cliente_DAO();
         
-        setTitle("Clientes");
-        setLocationRelativeTo(null);
-        Util_ebg.habilitar(false, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);    
+        Util_ebg.habilitar(false, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnPesquisar_ebg);
+        
+        setTitle("Cadastro de Clientes");
+        setLocationRelativeTo(null);
         
         try {
             mascaraCpf = new MaskFormatter("###.###.###-##");
@@ -276,7 +278,7 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
         jLabel3.setText("Nascimento:");
 
         jBtnAlterar_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/01 - alterar.png"))); // NOI18N
-        jBtnAlterar_ebg.setText("Alerar");
+        jBtnAlterar_ebg.setText("Alterar");
         jBtnAlterar_ebg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnAlterar_ebgActionPerformed(evt);
@@ -475,13 +477,15 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
             }else {
                 Util_ebg.mensagem("Exclusão cancelada.");
             }
-        Util_ebg.habilitar(false, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.habilitar(false, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
         Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
     }//GEN-LAST:event_jBtnExcluir_ebgActionPerformed
 
     private void jBtnConfirmar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmar_ebgActionPerformed
         // TODO add your handling code here:
-        clienteEbg = viewBean();
+        ClienteEbg clienteEbg = viewBean();
+        Cliente_DAO cliente_DAO = new Cliente_DAO();
 
         if (incluindo == true) {
             cliente_DAO.insert(clienteEbg);
@@ -489,14 +493,16 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
             cliente_DAO.update(clienteEbg);
         }
 
-        Util_ebg.habilitar(false, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.habilitar(false, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
         Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        
+        Util_ebg.mensagem("Incluido com sucesso!");
     }//GEN-LAST:event_jBtnConfirmar_ebgActionPerformed
 
     private void jBtnCancelar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_ebgActionPerformed
         // TODO add your handling code here:
-        Util_ebg.habilitar(false, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.habilitar(false, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
         Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.mensagem("Operação cancelada");
@@ -539,19 +545,20 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
         jDlgClientePesquisar_ebg.setTelaAnterior(this);
         jDlgClientePesquisar_ebg.setVisible(true);
         Util_ebg.habilitar(true, jBtnCancelar_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg);
+        Util_ebg.habilitar(false, jBtnIncluir_ebg, jBtnConfirmar_ebg);
     }//GEN-LAST:event_jBtnPesquisar_ebgActionPerformed
 
     private void jBtnIncluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_ebgActionPerformed
         // TODO add your handling code here:
-        Util_ebg.habilitar(true, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.habilitar(true, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.habilitar(false, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
         Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
-        incluindo = true;;
+        incluindo = true;
     }//GEN-LAST:event_jBtnIncluir_ebgActionPerformed
 
     private void jBtnAlterar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_ebgActionPerformed
         // TODO add your handling code here:
-        Util_ebg.habilitar(true, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.habilitar(true, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.habilitar(false, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
         incluindo = false;
     }//GEN-LAST:event_jBtnAlterar_ebgActionPerformed

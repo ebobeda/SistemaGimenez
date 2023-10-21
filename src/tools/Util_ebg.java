@@ -62,26 +62,22 @@ public class Util_ebg {
     }
     
     public static String intStr(int num){
-        return "";
+        return Integer.toString(num);
     }
     
-    public static double doubleStr(double cad){
-        return 0;
+    public static double strDouble(String cad){
+        return Double.parseDouble(cad);
     }
     
-    public static String DoubleStr(double num){
-        return "";
+    public static String doubleStr(double num){
+     return Double.toString(num);
     }
     
-    public static Date StrDate(String cad){
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-            return formato.parse(cad);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
-    };
+    public static Date strDate(String cad)throws ParseException{
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    return dateFormat.parse(cad);
+    
+    }
     
     public static String dateStr(Date date){
         SimpleDateFormat formataNascimento = new SimpleDateFormat("dd/MM/yyyy");

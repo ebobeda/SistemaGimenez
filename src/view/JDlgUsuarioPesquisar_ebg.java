@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class JDlgUsuarioPesquisar_ebg extends javax.swing.JDialog {
     private JDlgUsuario_ebg jDlgUsuario_ebg;
-    UsuarioControle_ebg UsuarioControle_ebg;
+    UsuarioControle_ebg usuarioControle_ebg;
 
     /**
      * Creates new form JDlgClientePesquisar
@@ -25,11 +25,11 @@ public class JDlgUsuarioPesquisar_ebg extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Consulta de usuários");
-        UsuarioControle_ebg = new UsuarioControle_ebg();
-        Usuario_DAO cliente_DAO = new Usuario_DAO();
-        List lista = cliente_DAO.listAll();
-        UsuarioControle_ebg.setList(lista);
-        jTable1.setModel(UsuarioControle_ebg);
+        usuarioControle_ebg = new UsuarioControle_ebg();
+        Usuario_DAO usuario_DAO = new Usuario_DAO();
+        List lista = usuario_DAO.listAll();
+        usuarioControle_ebg.setList(lista);
+        jTable1.setModel(usuarioControle_ebg);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,14 +111,14 @@ public class JDlgUsuarioPesquisar_ebg extends javax.swing.JDialog {
     private void jBtnOk_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOk_ebgActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
-        UsuarioEbg usuarioEbg = UsuarioControle_ebg.getBean(rowSel);
+        UsuarioEbg usuarioEbg = usuarioControle_ebg.getBean(rowSel);
         jDlgUsuario_ebg.beanView(usuarioEbg);
         setVisible(false);
     }//GEN-LAST:event_jBtnOk_ebgActionPerformed
 
     private void jBtnCancelar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_ebgActionPerformed
         // TODO add your handling code here:
-        this.hide();
+        setVisible(false);
     }//GEN-LAST:event_jBtnCancelar_ebgActionPerformed
 
     /**
