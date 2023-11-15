@@ -52,7 +52,7 @@ public class JDlgConsultaCartao_ebg extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setText("Nome Completo");
 
@@ -63,7 +63,7 @@ public class JDlgConsultaCartao_ebg extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setText("Csc");
+        jLabel2.setText("Csc ( >= )");
 
         jTxtCsc_ebg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
