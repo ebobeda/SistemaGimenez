@@ -6,7 +6,7 @@
 package view;
 import bean.ProdutoEbg;
 import dao.Produto_DAO;
-import view.ProdutoControle_ebg;
+import view.ProdutoController_ebg;
 import java.util.List;
 import tools.Util_ebg;
 /**
@@ -20,7 +20,7 @@ public class JDlgProduto_ebg extends javax.swing.JDialog {
      */
     ProdutoEbg produtoEbg;
     Produto_DAO produto_DAO;
-    ProdutoControle_ebg produtoControle_ebg;
+    ProdutoController_ebg produtoControle_ebg;
     JDlgProdutoNovoIA jDlgProdutoNovoIA;
     boolean incluindo;
     
@@ -32,7 +32,7 @@ public class JDlgProduto_ebg extends javax.swing.JDialog {
         
         jDlgProdutoNovoIA = new JDlgProdutoNovoIA(null, true);
         
-        produtoControle_ebg = new ProdutoControle_ebg();
+        produtoControle_ebg = new ProdutoController_ebg();
         produto_DAO = new  Produto_DAO();
         List lista = produto_DAO.listAll();
         produtoControle_ebg.setList(lista);

@@ -5,6 +5,12 @@
  */
 package view;
 
+import query.JDlgConsultaCartao_ebg;
+import query.JDlgConsultaCliente_ebg;
+import query.JDlgConsultaProduto_ebg;
+import query.JDlgConsultaUsuario_ebg;
+import query.JDlgConsultaVendedor_ebg;
+
 /**
  *
  * @author user
@@ -39,8 +45,8 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JToolBar.Separator();
         jBtnToolVendedor_ebg = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
-        jSeparator7 = new javax.swing.JToolBar.Separator();
         jBtnToolProduto_ebg = new javax.swing.JButton();
+        jSeparator7 = new javax.swing.JToolBar.Separator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMnuPrincipal_ebg = new javax.swing.JMenu();
         jMnuClientes_ebg = new javax.swing.JMenuItem();
@@ -52,6 +58,12 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         jMenuSair_ebg = new javax.swing.JMenuItem();
         jMnuMovimento_ebg = new javax.swing.JMenu();
         jMnuVendas_ebg = new javax.swing.JMenuItem();
+        Vendedor = new javax.swing.JMenu();
+        jMnuConsultaCliente_ebg = new javax.swing.JMenuItem();
+        jMnuConsultaUsuario_ebg = new javax.swing.JMenuItem();
+        jMnuConsultaCartao_ebg = new javax.swing.JMenuItem();
+        jMnuConsultaVendedor_ebg = new javax.swing.JMenuItem();
+        jMnuConsultaProduto_ebg = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,7 +130,6 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         });
         jToolBar1.add(jBtnToolVendedor_ebg);
         jToolBar1.add(jSeparator6);
-        jToolBar1.add(jSeparator7);
 
         jBtnToolProduto_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/14 - compra.png"))); // NOI18N
         jBtnToolProduto_ebg.setFocusable(false);
@@ -133,6 +144,7 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(jBtnToolProduto_ebg);
+        jToolBar1.add(jSeparator7);
 
         jMnuPrincipal_ebg.setMnemonic('P');
         jMnuPrincipal_ebg.setText("Principal");
@@ -214,6 +226,60 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         jMnuMovimento_ebg.add(jMnuVendas_ebg);
 
         jMenuBar1.add(jMnuMovimento_ebg);
+
+        Vendedor.setText("Consulta");
+
+        jMnuConsultaCliente_ebg.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuConsultaCliente_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/09 - cliente.png"))); // NOI18N
+        jMnuConsultaCliente_ebg.setText("Clientes");
+        jMnuConsultaCliente_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuConsultaCliente_ebgActionPerformed(evt);
+            }
+        });
+        Vendedor.add(jMnuConsultaCliente_ebg);
+
+        jMnuConsultaUsuario_ebg.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuConsultaUsuario_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/08 - usuario.png"))); // NOI18N
+        jMnuConsultaUsuario_ebg.setText("Usuarios");
+        jMnuConsultaUsuario_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuConsultaUsuario_ebgActionPerformed(evt);
+            }
+        });
+        Vendedor.add(jMnuConsultaUsuario_ebg);
+
+        jMnuConsultaCartao_ebg.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuConsultaCartao_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/11 - cartao.png"))); // NOI18N
+        jMnuConsultaCartao_ebg.setText("Cartão");
+        jMnuConsultaCartao_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuConsultaCartao_ebgActionPerformed(evt);
+            }
+        });
+        Vendedor.add(jMnuConsultaCartao_ebg);
+
+        jMnuConsultaVendedor_ebg.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuConsultaVendedor_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/13 - venda.png"))); // NOI18N
+        jMnuConsultaVendedor_ebg.setText("Vendedor");
+        jMnuConsultaVendedor_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuConsultaVendedor_ebgActionPerformed(evt);
+            }
+        });
+        Vendedor.add(jMnuConsultaVendedor_ebg);
+
+        jMnuConsultaProduto_ebg.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuConsultaProduto_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/14 - compra.png"))); // NOI18N
+        jMnuConsultaProduto_ebg.setText("Produto");
+        jMnuConsultaProduto_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuConsultaProduto_ebgActionPerformed(evt);
+            }
+        });
+        Vendedor.add(jMnuConsultaProduto_ebg);
+
+        jMenuBar1.add(Vendedor);
 
         setJMenuBar(jMenuBar1);
 
@@ -298,6 +364,31 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         jDlgProduto_ebg.setVisible(true);
     }//GEN-LAST:event_jBtnToolProduto_ebgActionPerformed
 
+    private void jMnuConsultaCliente_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuConsultaCliente_ebgActionPerformed
+        query.JDlgConsultaCliente_ebg jDlgConsultaCliente_ebg = new JDlgConsultaCliente_ebg(null, true);
+        jDlgConsultaCliente_ebg.setVisible(true);
+    }//GEN-LAST:event_jMnuConsultaCliente_ebgActionPerformed
+
+    private void jMnuConsultaVendedor_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuConsultaVendedor_ebgActionPerformed
+        query.JDlgConsultaVendedor_ebg jDlgConsultaVendedor_ebg = new JDlgConsultaVendedor_ebg(null, true);
+        jDlgConsultaVendedor_ebg.setVisible(true);
+    }//GEN-LAST:event_jMnuConsultaVendedor_ebgActionPerformed
+
+    private void jMnuConsultaUsuario_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuConsultaUsuario_ebgActionPerformed
+        query.JDlgConsultaUsuario_ebg jDlgConsultaUsuario_ebg = new JDlgConsultaUsuario_ebg(null, true);
+        jDlgConsultaUsuario_ebg.setVisible(true);
+    }//GEN-LAST:event_jMnuConsultaUsuario_ebgActionPerformed
+
+    private void jMnuConsultaCartao_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuConsultaCartao_ebgActionPerformed
+        query.JDlgConsultaCartao_ebg jDlgConsultaCartao_ebg = new JDlgConsultaCartao_ebg(null, true);
+        jDlgConsultaCartao_ebg.setVisible(true);
+    }//GEN-LAST:event_jMnuConsultaCartao_ebgActionPerformed
+
+    private void jMnuConsultaProduto_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuConsultaProduto_ebgActionPerformed
+        query.JDlgConsultaProduto_ebg jDlgConsultaProduto_ebg = new JDlgConsultaProduto_ebg(null, true);
+        jDlgConsultaProduto_ebg.setVisible(true);
+    }//GEN-LAST:event_jMnuConsultaProduto_ebgActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -334,6 +425,7 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Vendedor;
     private javax.swing.JButton jBtnToolCartao_ebg;
     private javax.swing.JButton jBtnToolCliente_ebg;
     private javax.swing.JButton jBtnToolProduto_ebg;
@@ -346,6 +438,11 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuUsuarios_ebg;
     private javax.swing.JMenuItem jMenuVendedor_ebg;
     private javax.swing.JMenuItem jMnuClientes_ebg;
+    private javax.swing.JMenuItem jMnuConsultaCartao_ebg;
+    private javax.swing.JMenuItem jMnuConsultaCliente_ebg;
+    private javax.swing.JMenuItem jMnuConsultaProduto_ebg;
+    private javax.swing.JMenuItem jMnuConsultaUsuario_ebg;
+    private javax.swing.JMenuItem jMnuConsultaVendedor_ebg;
     private javax.swing.JMenu jMnuMovimento_ebg;
     private javax.swing.JMenu jMnuPrincipal_ebg;
     private javax.swing.JMenuItem jMnuVendas_ebg;

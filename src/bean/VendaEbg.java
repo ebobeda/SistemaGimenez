@@ -1,5 +1,5 @@
 package bean;
-// Generated 13/09/2023 13:13:29 by Hibernate Tools 4.3.1
+// Generated 09/11/2023 13:54:16 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -43,6 +43,7 @@ public class VendaEbg  implements java.io.Serializable {
         this.dataEbg = dataEbg;
         this.totalvendaEbg = totalvendaEbg;
     }
+   
      @Id 
 
     
@@ -94,6 +95,10 @@ public class VendaEbg  implements java.io.Serializable {
     public void setTotalvendaEbg(String totalvendaEbg) {
         this.totalvendaEbg = totalvendaEbg;
     }
+
+
+
+
 }
 
 

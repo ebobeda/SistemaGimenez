@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class JDlgUsuarioPesquisar_ebg extends javax.swing.JDialog {
     private JDlgUsuario_ebg jDlgUsuario_ebg;
-    UsuarioControle_ebg usuarioControle_ebg;
+    UsuarioController_ebg usuarioControle_ebg;
 
     /**
      * Creates new form JDlgClientePesquisar
@@ -25,7 +25,7 @@ public class JDlgUsuarioPesquisar_ebg extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Consulta de usuários");
-        usuarioControle_ebg = new UsuarioControle_ebg();
+        usuarioControle_ebg = new UsuarioController_ebg();
         Usuario_DAO usuario_DAO = new Usuario_DAO();
         List lista = usuario_DAO.listAll();
         usuarioControle_ebg.setList(lista);

@@ -60,5 +60,39 @@ public class Cartao_DAO extends DAO_Abstract{
         return lista; //registros no java sao transformados em bean; nao precisa do array pq mudou na linha 50 só pra list
     }
     
+    public List listNomecompleto(String nomecompletoEbg){
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(CartaoEbg.class);
+    criteria.add(Restrictions.like("nomecompletoEbg","%"+nomecompletoEbg+"%"));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+    }
+    
+    public List listCsc(int cscEbg){
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(CartaoEbg.class);
+    criteria.add(Restrictions.ge("cscEbg",cscEbg));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+    }
+    
+    public List listNomecompletoCsc(String nomecompletoEbg, int cscEbg){
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(CartaoEbg.class);
+    criteria.add(Restrictions.like("nomecompletoEbg","%"+nomecompletoEbg+"%"));
+    criteria.add(Restrictions.ge("cpfEbg",cscEbg));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+    }
+    
+    public static void main(String[] args){
+        Cartao_DAO cartao_DAO = new Cartao_DAO();
+        List lista = cartao_DAO.listAll();
+        for (Object cartaoEbg : lista) {
+            System.out.println(((CartaoEbg)cartaoEbg).getNomecompletoEbg());
+        }
+    }
 }
-

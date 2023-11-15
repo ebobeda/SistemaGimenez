@@ -1,5 +1,5 @@
 package bean;
-// Generated 13/09/2023 13:13:29 by Hibernate Tools 4.3.1
+// Generated 09/11/2023 13:54:16 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -26,9 +26,6 @@ public class VendaprodutoEbg  implements java.io.Serializable {
      private VendedorEbg vendedorEbg;
      private int quantidadeEbg;
      private String valorunitEbg;
-
-    public VendaprodutoEbg() {
-    }
 
     public VendaprodutoEbg(int idvendaprodutoEbg, ProdutoEbg produtoEbg, VendaEbg vendaEbg, VendedorEbg vendedorEbg, int quantidadeEbg, String valorunitEbg) {
        this.idvendaprodutoEbg = idvendaprodutoEbg;

@@ -21,7 +21,7 @@ public class JDlgCartao_ebg extends javax.swing.JDialog {
     
     CartaoEbg cartaoEbg;
     Cartao_DAO cartao_DAO;
-    CartaoControle_ebg cartaoControle_ebg;
+    CartaoController_ebg cartaoControle_ebg;
     JDlgCartaoNovoIA jDlgCartaoNovoIA;
     boolean incluindo;
     
@@ -31,7 +31,7 @@ public class JDlgCartao_ebg extends javax.swing.JDialog {
         setTitle("Inclusão");
         setLocationRelativeTo(null);
         jDlgCartaoNovoIA = new JDlgCartaoNovoIA(null, true);
-        cartaoControle_ebg = new CartaoControle_ebg();
+        cartaoControle_ebg = new CartaoController_ebg();
         cartao_DAO = new Cartao_DAO();
         List lista = cartao_DAO.listAll();
         cartaoControle_ebg.setList(lista);

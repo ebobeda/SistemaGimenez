@@ -1,5 +1,5 @@
 package bean;
-// Generated 13/09/2023 13:13:29 by Hibernate Tools 4.3.1
+// Generated 09/11/2023 13:54:16 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -33,7 +33,7 @@ public class ClienteEbg  implements java.io.Serializable {
      private String cpfEbg;
      private String emailEbg;
      private String celularEbg;
-     private String cepEbg;
+     private int cepEbg;
      private String enderecoEbg;
      private String numeroEbg;
      private String bairroEbg;
@@ -41,11 +41,8 @@ public class ClienteEbg  implements java.io.Serializable {
      private String ufEbg;
      private String complementoEbg;
 
-    public ClienteEbg() {
-    }
-
 	
-    public ClienteEbg(int idclienteEbg, String nomeEbg, String generoEbg, String profissaoEbg, Date nascimentoEbg, String rgEbg, String cpfEbg, String emailEbg, String celularEbg, String cepEbg, String enderecoEbg, String numeroEbg, String bairroEbg, String cidadeEbg, String ufEbg, String complementoEbg) {
+    public ClienteEbg(int idclienteEbg, String nomeEbg, String generoEbg, String profissaoEbg, Date nascimentoEbg, String rgEbg, String cpfEbg, String emailEbg, String celularEbg, int cepEbg, String enderecoEbg, String numeroEbg, String bairroEbg, String cidadeEbg, String ufEbg, String complementoEbg) {
         this.idclienteEbg = idclienteEbg;
         this.nomeEbg = nomeEbg;
         this.generoEbg = generoEbg;
@@ -63,7 +60,10 @@ public class ClienteEbg  implements java.io.Serializable {
         this.ufEbg = ufEbg;
         this.complementoEbg = complementoEbg;
     }
-   
+
+    public ClienteEbg() {
+        
+    }
    
      @Id 
 
@@ -158,12 +158,12 @@ public class ClienteEbg  implements java.io.Serializable {
     }
 
     
-    @Column(name="cep_ebg", nullable=false, length=80)
-    public String getCepEbg() {
+    @Column(name="cep_ebg", nullable=false)
+    public int getCepEbg() {
         return this.cepEbg;
     }
     
-    public void setCepEbg(String cepEbg) {
+    public void setCepEbg(int cepEbg) {
         this.cepEbg = cepEbg;
     }
 
@@ -226,6 +226,7 @@ public class ClienteEbg  implements java.io.Serializable {
     public void setComplementoEbg(String complementoEbg) {
         this.complementoEbg = complementoEbg;
     }
+
 
 
 }

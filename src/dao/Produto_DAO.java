@@ -52,7 +52,7 @@ public class Produto_DAO extends DAO_Abstract{
     }
 
     @Override
-    public List listAll() {
+        public List listAll() {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(ProdutoEbg.class); //importar do bean e do hibernate; criteria é pra fazer select * from na O.O
         List lista = criteria.list();
@@ -60,5 +60,40 @@ public class Produto_DAO extends DAO_Abstract{
         return lista; //registros no java sao transformados em bean; nao precisa do array pq mudou na linha 50 só pra list
     }
     
+    public List listMassa(int massaEbg){
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(ProdutoEbg.class);
+    criteria.add(Restrictions.ge("massaEbg",massaEbg));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+    }
+    
+    public List listTamanho(int tamanhoEbg){
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(ProdutoEbg.class);
+    criteria.add(Restrictions.ge("tamanhoEbg",tamanhoEbg));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+    }
+    
+    public List listMassaTamanho(int massaEbg, int tamanhoEbg){
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(ProdutoEbg.class);
+    criteria.add(Restrictions.ge("massaEbg",massaEbg));
+    criteria.add(Restrictions.ge("tamanhoEbg",tamanhoEbg));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+    }
+    
+    public static void main(String[] args){
+        Produto_DAO produto_DAO = new Produto_DAO();
+        List lista = produto_DAO.listAll();
+        for (Object produtoEbg : lista) {
+            System.out.println(((ProdutoEbg)produtoEbg).getSaborEbg());
+        }
+    }
 }
 

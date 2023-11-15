@@ -76,4 +76,39 @@ public class Usuario_DAO extends DAO_Abstract{
         return lista; //registros no java sao transformados em bean; nao precisa do array pq mudou na linha 50 só pra list
     }
     
+    public List listNome(String nomeEbg){
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(UsuarioEbg.class);
+    criteria.add(Restrictions.like("nomeEbg","%"+nomeEbg+"%"));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+    }
+    
+    public List listCpf(String cpfEbg){
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(UsuarioEbg.class);
+    criteria.add(Restrictions.like("cpfEbg","%"+cpfEbg+"%"));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+    }
+    
+    public List listNomeCpf(String nomeEbg, String cpfEbg){
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(UsuarioEbg.class);
+    criteria.add(Restrictions.like("nomeEbg","%"+nomeEbg+"%"));
+    criteria.add(Restrictions.like("cpfEbg","%"+cpfEbg+"%"));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+    }
+    
+    public static void main(String[] args){
+        Usuario_DAO usuario_DAO = new Usuario_DAO();
+        List lista = usuario_DAO.listAll();
+        for (Object usuarioEbg : lista) {
+            System.out.println(((UsuarioEbg)usuarioEbg).getNomeEbg());
+        }
+    }
 }

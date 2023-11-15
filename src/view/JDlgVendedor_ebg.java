@@ -21,7 +21,7 @@ public class JDlgVendedor_ebg extends javax.swing.JDialog {
 
     VendedorEbg vendedorEbg;
     Vendedor_DAO vendedor_DAO;
-    VendedorControle_ebg vendedorControle_ebg;
+    VendedorController_ebg vendedorControle_ebg;
     JDlgVendedorNovoIA jDlgVendedorNovoIA;
     boolean incluindo;
      
@@ -31,7 +31,7 @@ public class JDlgVendedor_ebg extends javax.swing.JDialog {
         setTitle("Cadastro de Vendedores");
         setLocationRelativeTo(null);
         jDlgVendedorNovoIA = new JDlgVendedorNovoIA(null, true);
-        vendedorControle_ebg = new VendedorControle_ebg();
+        vendedorControle_ebg = new VendedorController_ebg();
         vendedor_DAO = new Vendedor_DAO();
         List lista = vendedor_DAO.listAll();
         vendedorControle_ebg.setList(lista);

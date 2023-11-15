@@ -1,5 +1,5 @@
 package bean;
-// Generated 13/09/2023 13:13:29 by Hibernate Tools 4.3.1
+// Generated 09/11/2023 13:54:16 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -24,13 +24,13 @@ public class CartaoEbg  implements java.io.Serializable {
      private String nomecompletoEbg;
      private String cpfEbg;
      private String numerocartaoEbg;
-     private String cscEbg;
+     private int cscEbg;
      private Date validadeEbg;
 
     public CartaoEbg() {
     }
 
-    public CartaoEbg(int idcartaoEbg, String nomecompletoEbg, String cpfEbg, String numerocartaoEbg, String cscEbg, Date validadeEbg) {
+    public CartaoEbg(int idcartaoEbg, String nomecompletoEbg, String cpfEbg, String numerocartaoEbg, int cscEbg, Date validadeEbg) {
        this.idcartaoEbg = idcartaoEbg;
        this.nomecompletoEbg = nomecompletoEbg;
        this.cpfEbg = cpfEbg;
@@ -82,12 +82,12 @@ public class CartaoEbg  implements java.io.Serializable {
     }
 
     
-    @Column(name="csc_ebg", nullable=false, length=80)
-    public String getCscEbg() {
+    @Column(name="csc_ebg", nullable=false)
+    public int getCscEbg() {
         return this.cscEbg;
     }
     
-    public void setCscEbg(String cscEbg) {
+    public void setCscEbg(int cscEbg) {
         this.cscEbg = cscEbg;
     }
 

@@ -1,5 +1,5 @@
 package bean;
-// Generated 13/09/2023 13:13:29 by Hibernate Tools 4.3.1
+// Generated 09/11/2023 13:54:16 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -31,19 +31,18 @@ public class VendedorEbg  implements java.io.Serializable {
      private Date dataexpedienteEbg;
      private String comissaoEbg;
 
-    public VendedorEbg() {
+    public VendedorEbg(int idvendedorEbg, String nomeEbg, String cpfEbg, String celularEbg, Date dataexpedienteEbg, String comissaoEbg) {
+       this.idvendedorEbg = idvendedorEbg;
+       this.nomeEbg = nomeEbg;
+       this.cpfEbg = cpfEbg;
+       this.celularEbg = celularEbg;
+       this.dataexpedienteEbg = dataexpedienteEbg;
+       this.comissaoEbg = comissaoEbg;
     }
 
-	
-    public VendedorEbg(int idvendedorEbg, String nomeEbg, String cpfEbg, String celularEbg, Date dataexpedienteEbg, String comissaoEbg) {
-        this.idvendedorEbg = idvendedorEbg;
-        this.nomeEbg = nomeEbg;
-        this.cpfEbg = cpfEbg;
-        this.celularEbg = celularEbg;
-        this.dataexpedienteEbg = dataexpedienteEbg;
-        this.comissaoEbg = comissaoEbg;
+    public VendedorEbg() {
+        
     }
-    
    
      @Id 
 

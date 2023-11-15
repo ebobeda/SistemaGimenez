@@ -57,27 +57,32 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jFmtNascimento_ebg" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jFmtCpf_ebg" alignment="0" pref="104" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                                  <Component id="jTxtEmail_ebg" alignment="0" min="-2" pref="214" max="-2" attributes="0"/>
-                                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jFmtNumero_ebg" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jFmtNascimento_ebg" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                                      <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jTxtUf_ebg" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                                                  </Group>
+                                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="jFmtCep_ebg" alignment="0" min="-2" pref="214" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jFmtCpf_ebg" max="32767" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jTxtEmail_ebg" alignment="0" pref="214" max="32767" attributes="0"/>
+                                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jFmtNumero_ebg" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jTxtUf_ebg" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jTxtCep_ebg" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Component id="jTxtEndereco_ebg" alignment="0" min="-2" pref="199" max="-2" attributes="0"/>
@@ -170,8 +175,8 @@
                       <Component id="jLabel5" min="-2" pref="14" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jFmtCpf_ebg" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTxtEmail_ebg" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFmtCpf_ebg" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -183,15 +188,16 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jFmtCelular_ebg" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jFmtCelular_ebg" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTxtCep_ebg" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jFmtCep_ebg" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -227,7 +233,7 @@
               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTxtComplemento_ebg" min="-2" pref="70" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                       <Component id="jBtnIncluir_ebg" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
@@ -282,16 +288,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnCancelar_ebgActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jFmtCpf_ebg">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-          <Format format="###########" subtype="-1" type="5"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFmtCpf_ebgActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel15">
@@ -357,16 +353,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="jFmtNumero_ebg">
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jFmtCep_ebg">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format format="#0" subtype="-1" type="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFmtCep_ebgActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtUf_ebg">
     </Component>
@@ -458,6 +444,10 @@
           <Format format="#########" subtype="-1" type="5"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTxtCep_ebg">
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jFmtCpf_ebg">
     </Component>
   </SubComponents>
 </Form>

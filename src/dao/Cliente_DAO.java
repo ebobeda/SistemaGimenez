@@ -60,4 +60,39 @@ public class Cliente_DAO extends DAO_Abstract{
         return lista; //registros no java sao transformados em bean; nao precisa do array pq mudou na linha 50 só pra list
     }
     
+    public List listEmail(String emailEbg){
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(ClienteEbg.class);
+    criteria.add(Restrictions.like("emailEbg","%"+emailEbg+"%"));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+    }
+    
+    public List listCep(int cepEbg){
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(ClienteEbg.class);
+    criteria.add(Restrictions.ge("cepEbg",cepEbg));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+    }
+    
+    public List listEmailCep(String emailEbg, int cepEbg){
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(ClienteEbg.class);
+    criteria.add(Restrictions.like("emailEbg","%"+emailEbg+"%"));
+    criteria.add(Restrictions.ge("cepEbg",cepEbg));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+    }
+    
+    public static void main(String[] args){
+        Cliente_DAO cliente_DAO = new Cliente_DAO();
+        List lista = cliente_DAO.listAll();
+        for (Object clienteEbg : lista) {
+            System.out.println(((ClienteEbg)clienteEbg).getNomeEbg());
+        }
+    }
 }

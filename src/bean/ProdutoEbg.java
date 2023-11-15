@@ -1,5 +1,5 @@
 package bean;
-// Generated 13/09/2023 13:13:29 by Hibernate Tools 4.3.1
+// Generated 09/11/2023 13:54:16 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -43,6 +43,16 @@ public class ProdutoEbg  implements java.io.Serializable {
         this.modoEbg = modoEbg;
         this.tamanhoEbg = tamanhoEbg;
         this.retirarEbg = retirarEbg;
+    }
+    public ProdutoEbg(int idprodutoEbg, String valorunitEbg, String saborEbg, String unidadeEbg, int massaEbg, int modoEbg, int tamanhoEbg, int retirarEbg, Set vendaprodutoEbg) {
+       this.idprodutoEbg = idprodutoEbg;
+       this.valorunitEbg = valorunitEbg;
+       this.saborEbg = saborEbg;
+       this.unidadeEbg = unidadeEbg;
+       this.massaEbg = massaEbg;
+       this.modoEbg = modoEbg;
+       this.tamanhoEbg = tamanhoEbg;
+       this.retirarEbg = retirarEbg;
     }
    
      @Id 
@@ -126,6 +136,9 @@ public class ProdutoEbg  implements java.io.Serializable {
     public void setRetirarEbg(int retirarEbg) {
         this.retirarEbg = retirarEbg;
     }
+
+
+
 }
 
 

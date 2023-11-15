@@ -22,7 +22,7 @@ import tools.Util_ebg;
 public class JDlgCliente_ebg extends javax.swing.JDialog {
     private boolean incluindo;
     
-    private MaskFormatter mascaraCpf, mascaraCelular,mascaraNascimento, mascaraRg, mascaraCep, mascaraNumero;
+    private MaskFormatter mascaraCPF, mascaraCelular,mascaraNascimento, mascaraRg, mascaraNumero;
     public ClienteEbg clienteEbg;
     public Cliente_DAO cliente_DAO;
 
@@ -31,28 +31,26 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
         initComponents();
         cliente_DAO = new Cliente_DAO();
         
-        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);    
-        Util_ebg.habilitar(false, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jTxtCep_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jTxtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);    
+        Util_ebg.habilitar(false, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jTxtCep_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jTxtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnPesquisar_ebg);
         
         setTitle("Cadastro de Clientes");
         setLocationRelativeTo(null);
         
         try {
-            mascaraCpf = new MaskFormatter("###.###.###-##");
+            mascaraCPF = new MaskFormatter("###.###.###-##");
             mascaraRg = new MaskFormatter("#.###.###");
             mascaraCelular = new MaskFormatter("(##)####-####");
             mascaraNascimento = new MaskFormatter("##/##/####");
-            mascaraCep = new MaskFormatter("#####.###");
             mascaraNumero = new MaskFormatter("####");
         } catch (ParseException ex) {
             Logger.getLogger(JDlgCliente_ebg.class.getName()).log(Level.SEVERE, null, ex);
         }
-         jFmtCpf_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
+         jFmtCpf_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraCPF));
          jFmtRg_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraRg));
          jFmtCelular_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraCelular));
          jFmtNascimento_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraNascimento));
-         jFmtCep_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraCep));
          jFmtNumero_ebg.setFormatterFactory(new DefaultFormatterFactory(mascaraNumero));
     }
         public ClienteEbg viewBean() {
@@ -70,10 +68,10 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
         }
         
         clienteEbg.setRgEbg(jFmtRg_ebg.getText());
-        clienteEbg.setCpfEbg(jFmtCpf_ebg.getText());
+        clienteEbg.setCpfEbg(jTxtCep_ebg.getText());
         clienteEbg.setEmailEbg(jTxtEmail_ebg.getText());
         clienteEbg.setCelularEbg(jFmtCelular_ebg.getText());
-        clienteEbg.setCepEbg(jFmtCep_ebg.getText());
+        clienteEbg.setCepEbg(Util_ebg.strInt(jTxtCep_ebg.getText()));
         clienteEbg.setEnderecoEbg(jTxtEndereco_ebg.getText());
         clienteEbg.setNumeroEbg(jFmtNumero_ebg.getText());
         clienteEbg.setBairroEbg(jTxtBairro_ebg.getText());
@@ -96,10 +94,10 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         jFmtNascimento_ebg.setText(formato.format (clienteEbg.getNascimentoEbg()));
         jFmtRg_ebg.setText(clienteEbg.getRgEbg());
-        jFmtCpf_ebg.setText(clienteEbg.getCpfEbg());
+        jTxtCep_ebg.setText(clienteEbg.getCpfEbg());
         jTxtEmail_ebg.setText(clienteEbg.getEmailEbg());
         jFmtCelular_ebg.setText(clienteEbg.getCelularEbg());
-        jFmtCep_ebg.setText(clienteEbg.getCepEbg());
+        jTxtCep_ebg.setText(Util_ebg.intStr(clienteEbg.getCepEbg()));
         jTxtEndereco_ebg.setText(clienteEbg.getEnderecoEbg());
         jFmtNumero_ebg.setText(clienteEbg.getNumeroEbg());
         jTxtBairro_ebg.setText(clienteEbg.getBairroEbg());
@@ -120,7 +118,6 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
         jBtnConfirmar_ebg = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jBtnCancelar_ebg = new javax.swing.JButton();
-        jFmtCpf_ebg = new javax.swing.JFormattedTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTxtProfissao_ebg = new javax.swing.JTextField();
@@ -137,7 +134,6 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jFmtNumero_ebg = new javax.swing.JFormattedTextField();
-        jFmtCep_ebg = new javax.swing.JFormattedTextField();
         jTxtUf_ebg = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTxtBairro_ebg = new javax.swing.JTextField();
@@ -154,6 +150,8 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
         jBtnAlterar_ebg = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jFmtRg_ebg = new javax.swing.JFormattedTextField();
+        jTxtCep_ebg = new javax.swing.JTextField();
+        jFmtCpf_ebg = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -180,17 +178,6 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
         jBtnCancelar_ebg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCancelar_ebgActionPerformed(evt);
-            }
-        });
-
-        try {
-            jFmtCpf_ebg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFmtCpf_ebg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFmtCpf_ebgActionPerformed(evt);
             }
         });
 
@@ -229,13 +216,6 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
         jLabel10.setText("Número");
 
         jLabel11.setText("UF");
-
-        jFmtCep_ebg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        jFmtCep_ebg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFmtCep_ebgActionPerformed(evt);
-            }
-        });
 
         jLabel12.setText("Bairro");
 
@@ -327,23 +307,26 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jLabel3)
-                                                .addComponent(jFmtNascimento_ebg)
-                                                .addComponent(jLabel5)
-                                                .addComponent(jFmtCpf_ebg, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
-                                            .addGap(26, 26, 26)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel3)
+                                                        .addComponent(jFmtNascimento_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel5))
+                                                    .addGap(26, 26, 26))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jFmtCpf_ebg)
+                                                    .addGap(18, 18, 18)))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(jLabel9)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jTxtEmail_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel6)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel10)
-                                                        .addComponent(jFmtNumero_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel11)
-                                                        .addComponent(jTxtUf_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addComponent(jFmtCep_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(jTxtEmail_ebg, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                                                .addComponent(jLabel6)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel10)
+                                                    .addComponent(jFmtNumero_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel11)
+                                                    .addComponent(jTxtUf_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jTxtCep_ebg)))
                                         .addComponent(jTxtEndereco_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(119, 119, 119))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -410,8 +393,8 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jFmtCpf_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTxtEmail_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTxtEmail_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFmtCpf_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(26, 26, 26)))
@@ -419,12 +402,12 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFmtCelular_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jFmtCelular_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtCep_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFmtCep_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(26, 26, 26)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -452,7 +435,7 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTxtComplemento_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jBtnIncluir_ebg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -477,9 +460,9 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
             }else {
                 Util_ebg.mensagem("Exclusão cancelada.");
             }
-        Util_ebg.habilitar(false, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.habilitar(false, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jTxtCep_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jTxtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
-        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jTxtCep_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jTxtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
     }//GEN-LAST:event_jBtnExcluir_ebgActionPerformed
 
     private void jBtnConfirmar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmar_ebgActionPerformed
@@ -493,24 +476,20 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
             cliente_DAO.update(clienteEbg);
         }
 
-        Util_ebg.habilitar(false, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.habilitar(false, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jTxtCep_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jTxtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
-        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jTxtCep_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jTxtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         
         Util_ebg.mensagem("Incluido com sucesso!");
     }//GEN-LAST:event_jBtnConfirmar_ebgActionPerformed
 
     private void jBtnCancelar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_ebgActionPerformed
         // TODO add your handling code here:
-        Util_ebg.habilitar(false, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.habilitar(false, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jTxtCep_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jTxtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
-        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jTxtCep_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jTxtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.mensagem("Operação cancelada");
     }//GEN-LAST:event_jBtnCancelar_ebgActionPerformed
-
-    private void jFmtCpf_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtCpf_ebgActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFmtCpf_ebgActionPerformed
 
     private void jTxtEmail_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtEmail_ebgActionPerformed
         // TODO add your handling code here:
@@ -527,10 +506,6 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
     private void jTxtCodigo_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigo_ebgActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtCodigo_ebgActionPerformed
-
-    private void jFmtCep_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtCep_ebgActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFmtCep_ebgActionPerformed
 
     private void jTxtBairro_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtBairro_ebgActionPerformed
         // TODO add your handling code here:
@@ -550,15 +525,15 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
 
     private void jBtnIncluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_ebgActionPerformed
         // TODO add your handling code here:
-        Util_ebg.habilitar(true, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.habilitar(true, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jTxtCep_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jTxtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.habilitar(false, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
-        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.limparCampos(jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jTxtCep_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jTxtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         incluindo = true;
     }//GEN-LAST:event_jBtnIncluir_ebgActionPerformed
 
     private void jBtnAlterar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_ebgActionPerformed
         // TODO add your handling code here:
-        Util_ebg.habilitar(true, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jFmtCpf_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jFmtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
+        Util_ebg.habilitar(true, jBtnCancelar_ebg, jBtnConfirmar_ebg, jTxtCodigo_ebg, jTxtNome_ebg, jTxtGenero_ebg, jTxtProfissao_ebg, jFmtNascimento_ebg, jFmtRg_ebg, jTxtCep_ebg, jTxtEmail_ebg, jFmtCelular_ebg, jTxtCep_ebg, jTxtEndereco_ebg, jFmtNumero_ebg, jTxtBairro_ebg, jTxtCidade_ebg, jTxtUf_ebg, jTxtComplemento_ebg);
         Util_ebg.habilitar(false, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
         incluindo = false;
     }//GEN-LAST:event_jBtnAlterar_ebgActionPerformed
@@ -614,7 +589,6 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
     private javax.swing.JButton jBtnIncluir_ebg;
     private javax.swing.JButton jBtnPesquisar_ebg;
     private javax.swing.JFormattedTextField jFmtCelular_ebg;
-    private javax.swing.JFormattedTextField jFmtCep_ebg;
     private javax.swing.JFormattedTextField jFmtCpf_ebg;
     private javax.swing.JFormattedTextField jFmtNascimento_ebg;
     private javax.swing.JFormattedTextField jFmtNumero_ebg;
@@ -636,6 +610,7 @@ public class JDlgCliente_ebg extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTxtBairro_ebg;
+    private javax.swing.JTextField jTxtCep_ebg;
     private javax.swing.JTextField jTxtCidade_ebg;
     private javax.swing.JTextField jTxtCodigo_ebg;
     private javax.swing.JTextField jTxtComplemento_ebg;
