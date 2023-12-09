@@ -1,7 +1,8 @@
 package bean;
-// Generated 09/11/2023 13:54:16 by Hibernate Tools 4.3.1
+// Generated 08/12/2023 16:53:50 by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,21 +30,19 @@ public class VendedorEbg  implements java.io.Serializable {
      private String cpfEbg;
      private String celularEbg;
      private Date dataexpedienteEbg;
-     private String comissaoEbg;
-
-    public VendedorEbg(int idvendedorEbg, String nomeEbg, String cpfEbg, String celularEbg, Date dataexpedienteEbg, String comissaoEbg) {
-       this.idvendedorEbg = idvendedorEbg;
-       this.nomeEbg = nomeEbg;
-       this.cpfEbg = cpfEbg;
-       this.celularEbg = celularEbg;
-       this.dataexpedienteEbg = dataexpedienteEbg;
-       this.comissaoEbg = comissaoEbg;
-    }
+     private double comissaoEbg;
 
     public VendedorEbg() {
-        
     }
-   
+
+	
+    public VendedorEbg(int idvendedorEbg, String nomeEbg, String cpfEbg, String celularEbg, Date dataexpedienteEbg) {
+        this.idvendedorEbg = idvendedorEbg;
+        this.nomeEbg = nomeEbg;
+        this.cpfEbg = cpfEbg;
+        this.celularEbg = celularEbg;
+        this.dataexpedienteEbg = dataexpedienteEbg;
+    }
      @Id 
 
     
@@ -97,15 +96,26 @@ public class VendedorEbg  implements java.io.Serializable {
     }
 
     
-    @Column(name="comissao_ebg", nullable=false, length=80)
-    public String getComissaoEbg() {
+    @Column(name="comissao_ebg", precision=10)
+    public double getComissaoEbg() {
         return this.comissaoEbg;
     }
     
-    public void setComissaoEbg(String comissaoEbg) {
+    public void setComissaoEbg(double comissaoEbg) {
         this.comissaoEbg = comissaoEbg;
-    }
-
+    }@Override
+     public String toString() {
+    return nomeEbg;
+     }
+     
+     @Override
+      public boolean equals (Object object){
+      if(object instanceof ClienteEbg){
+      VendedorEbg vendedorEbg = (VendedorEbg) object;
+        if(this.getIdvendedorEbg() == vendedorEbg.getIdvendedorEbg())
+            return true;
+            }return false;
+        }
+         
 }
-
 

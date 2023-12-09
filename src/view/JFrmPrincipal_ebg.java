@@ -39,14 +39,15 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jBtnToolCliente_ebg = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
-        jBtnToolUsuario_ebg = new javax.swing.JButton();
-        jSeparator4 = new javax.swing.JToolBar.Separator();
-        jBtnToolCartao_ebg = new javax.swing.JButton();
-        jSeparator5 = new javax.swing.JToolBar.Separator();
-        jBtnToolVendedor_ebg = new javax.swing.JButton();
-        jSeparator6 = new javax.swing.JToolBar.Separator();
         jBtnToolProduto_ebg = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JToolBar.Separator();
+        jBtnToolVenda_ebg = new javax.swing.JButton();
+        jSeparator8 = new javax.swing.JToolBar.Separator();
+        jSeparator11 = new javax.swing.JToolBar.Separator();
+        jBtnToolConsCliente_ebg = new javax.swing.JButton();
+        jSeparator9 = new javax.swing.JToolBar.Separator();
+        jBtnToolConsProduto_ebg = new javax.swing.JButton();
+        jSeparator10 = new javax.swing.JToolBar.Separator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMnuPrincipal_ebg = new javax.swing.JMenu();
         jMnuClientes_ebg = new javax.swing.JMenuItem();
@@ -71,7 +72,9 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
         jToolBar1.add(jSeparator2);
 
+        jBtnToolCliente_ebg.setForeground(new java.awt.Color(0, 51, 51));
         jBtnToolCliente_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/09 - cliente.png"))); // NOI18N
+        jBtnToolCliente_ebg.setText("cad.");
         jBtnToolCliente_ebg.setFocusable(false);
         jBtnToolCliente_ebg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnToolCliente_ebg.setMaximumSize(new java.awt.Dimension(50, 45));
@@ -86,52 +89,9 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         jToolBar1.add(jBtnToolCliente_ebg);
         jToolBar1.add(jSeparator3);
 
-        jBtnToolUsuario_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/08 - usuario.png"))); // NOI18N
-        jBtnToolUsuario_ebg.setFocusable(false);
-        jBtnToolUsuario_ebg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBtnToolUsuario_ebg.setMaximumSize(new java.awt.Dimension(50, 45));
-        jBtnToolUsuario_ebg.setMinimumSize(new java.awt.Dimension(50, 45));
-        jBtnToolUsuario_ebg.setPreferredSize(new java.awt.Dimension(50, 45));
-        jBtnToolUsuario_ebg.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBtnToolUsuario_ebg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnToolUsuario_ebgActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jBtnToolUsuario_ebg);
-        jToolBar1.add(jSeparator4);
-
-        jBtnToolCartao_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/11 - cartao.png"))); // NOI18N
-        jBtnToolCartao_ebg.setFocusable(false);
-        jBtnToolCartao_ebg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBtnToolCartao_ebg.setMaximumSize(new java.awt.Dimension(50, 45));
-        jBtnToolCartao_ebg.setMinimumSize(new java.awt.Dimension(50, 45));
-        jBtnToolCartao_ebg.setPreferredSize(new java.awt.Dimension(50, 45));
-        jBtnToolCartao_ebg.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBtnToolCartao_ebg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnToolCartao_ebgActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jBtnToolCartao_ebg);
-        jToolBar1.add(jSeparator5);
-
-        jBtnToolVendedor_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/13 - venda.png"))); // NOI18N
-        jBtnToolVendedor_ebg.setFocusable(false);
-        jBtnToolVendedor_ebg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBtnToolVendedor_ebg.setMaximumSize(new java.awt.Dimension(50, 45));
-        jBtnToolVendedor_ebg.setMinimumSize(new java.awt.Dimension(50, 45));
-        jBtnToolVendedor_ebg.setPreferredSize(new java.awt.Dimension(50, 45));
-        jBtnToolVendedor_ebg.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBtnToolVendedor_ebg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnToolVendedor_ebgActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jBtnToolVendedor_ebg);
-        jToolBar1.add(jSeparator6);
-
+        jBtnToolProduto_ebg.setForeground(new java.awt.Color(0, 51, 51));
         jBtnToolProduto_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/14 - compra.png"))); // NOI18N
+        jBtnToolProduto_ebg.setText("cad.");
         jBtnToolProduto_ebg.setFocusable(false);
         jBtnToolProduto_ebg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnToolProduto_ebg.setMaximumSize(new java.awt.Dimension(50, 45));
@@ -145,6 +105,58 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         });
         jToolBar1.add(jBtnToolProduto_ebg);
         jToolBar1.add(jSeparator7);
+
+        jBtnToolVenda_ebg.setForeground(new java.awt.Color(0, 51, 51));
+        jBtnToolVenda_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/13 - venda.png"))); // NOI18N
+        jBtnToolVenda_ebg.setText("cad.");
+        jBtnToolVenda_ebg.setFocusable(false);
+        jBtnToolVenda_ebg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnToolVenda_ebg.setMaximumSize(new java.awt.Dimension(50, 45));
+        jBtnToolVenda_ebg.setMinimumSize(new java.awt.Dimension(50, 45));
+        jBtnToolVenda_ebg.setPreferredSize(new java.awt.Dimension(50, 45));
+        jBtnToolVenda_ebg.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnToolVenda_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnToolVenda_ebgActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnToolVenda_ebg);
+        jToolBar1.add(jSeparator8);
+        jToolBar1.add(jSeparator11);
+
+        jBtnToolConsCliente_ebg.setForeground(new java.awt.Color(0, 102, 102));
+        jBtnToolConsCliente_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/09 - cliente.png"))); // NOI18N
+        jBtnToolConsCliente_ebg.setText("cons.");
+        jBtnToolConsCliente_ebg.setFocusable(false);
+        jBtnToolConsCliente_ebg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnToolConsCliente_ebg.setMaximumSize(new java.awt.Dimension(50, 45));
+        jBtnToolConsCliente_ebg.setMinimumSize(new java.awt.Dimension(50, 45));
+        jBtnToolConsCliente_ebg.setPreferredSize(new java.awt.Dimension(50, 45));
+        jBtnToolConsCliente_ebg.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnToolConsCliente_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnToolConsCliente_ebgActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnToolConsCliente_ebg);
+        jToolBar1.add(jSeparator9);
+
+        jBtnToolConsProduto_ebg.setForeground(new java.awt.Color(0, 102, 102));
+        jBtnToolConsProduto_ebg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/14 - compra.png"))); // NOI18N
+        jBtnToolConsProduto_ebg.setText("cons.");
+        jBtnToolConsProduto_ebg.setFocusable(false);
+        jBtnToolConsProduto_ebg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnToolConsProduto_ebg.setMaximumSize(new java.awt.Dimension(50, 45));
+        jBtnToolConsProduto_ebg.setMinimumSize(new java.awt.Dimension(50, 45));
+        jBtnToolConsProduto_ebg.setPreferredSize(new java.awt.Dimension(50, 45));
+        jBtnToolConsProduto_ebg.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnToolConsProduto_ebg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnToolConsProduto_ebgActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnToolConsProduto_ebg);
+        jToolBar1.add(jSeparator10);
 
         jMnuPrincipal_ebg.setMnemonic('P');
         jMnuPrincipal_ebg.setText("Principal");
@@ -335,7 +347,7 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
 
     private void jMnuVendas_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendas_ebgActionPerformed
         // TODO add your handling code here:
-        JDlgVendas_ebg jDlgVendas_ebg = new JDlgVendas_ebg(null, true);
+        JDlgVenda_ebg jDlgVendas_ebg = new JDlgVenda_ebg(null, true);
         jDlgVendas_ebg.setVisible(true);
     }//GEN-LAST:event_jMnuVendas_ebgActionPerformed
 
@@ -343,21 +355,6 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         JDlgCliente_ebg jDlgCliente_ebg = new JDlgCliente_ebg(null, true);
         jDlgCliente_ebg.setVisible(true);
     }//GEN-LAST:event_jBtnToolCliente_ebgActionPerformed
-
-    private void jBtnToolUsuario_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToolUsuario_ebgActionPerformed
-        JDlgUsuario_ebg jDlgUsuario_ebg = new JDlgUsuario_ebg(null, true);
-        jDlgUsuario_ebg.setVisible(true);
-    }//GEN-LAST:event_jBtnToolUsuario_ebgActionPerformed
-
-    private void jBtnToolCartao_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToolCartao_ebgActionPerformed
-        JDlgCartao_ebg jDlgCartao_ebg = new JDlgCartao_ebg(null, true);
-        jDlgCartao_ebg.setVisible(true);
-    }//GEN-LAST:event_jBtnToolCartao_ebgActionPerformed
-
-    private void jBtnToolVendedor_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToolVendedor_ebgActionPerformed
-        JDlgVendedor_ebg jDlgVendedor_ebg = new JDlgVendedor_ebg(null, true);
-        jDlgVendedor_ebg.setVisible(true);
-    }//GEN-LAST:event_jBtnToolVendedor_ebgActionPerformed
 
     private void jBtnToolProduto_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToolProduto_ebgActionPerformed
         JDlgProduto_ebg jDlgProduto_ebg = new JDlgProduto_ebg(null, true);
@@ -388,6 +385,21 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
         query.JDlgConsultaProduto_ebg jDlgConsultaProduto_ebg = new JDlgConsultaProduto_ebg(null, true);
         jDlgConsultaProduto_ebg.setVisible(true);
     }//GEN-LAST:event_jMnuConsultaProduto_ebgActionPerformed
+
+    private void jBtnToolConsProduto_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToolConsProduto_ebgActionPerformed
+        query.JDlgConsultaProduto_ebg jDlgConsultaProduto_ebg = new JDlgConsultaProduto_ebg(null, true);
+        jDlgConsultaProduto_ebg.setVisible(true);
+    }//GEN-LAST:event_jBtnToolConsProduto_ebgActionPerformed
+
+    private void jBtnToolConsCliente_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToolConsCliente_ebgActionPerformed
+        query.JDlgConsultaUsuario_ebg jDlgConsultaUsuario_ebg = new JDlgConsultaUsuario_ebg(null, true);
+        jDlgConsultaUsuario_ebg.setVisible(true);
+    }//GEN-LAST:event_jBtnToolConsCliente_ebgActionPerformed
+
+    private void jBtnToolVenda_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToolVenda_ebgActionPerformed
+        JDlgVenda_ebg jDlgVendas_ebg = new JDlgVenda_ebg(null, true);
+        jDlgVendas_ebg.setVisible(true);
+    }//GEN-LAST:event_jBtnToolVenda_ebgActionPerformed
 
     /**
      * @param args the command line arguments
@@ -426,11 +438,11 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Vendedor;
-    private javax.swing.JButton jBtnToolCartao_ebg;
     private javax.swing.JButton jBtnToolCliente_ebg;
+    private javax.swing.JButton jBtnToolConsCliente_ebg;
+    private javax.swing.JButton jBtnToolConsProduto_ebg;
     private javax.swing.JButton jBtnToolProduto_ebg;
-    private javax.swing.JButton jBtnToolUsuario_ebg;
-    private javax.swing.JButton jBtnToolVendedor_ebg;
+    private javax.swing.JButton jBtnToolVenda_ebg;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCartao_ebg;
     private javax.swing.JMenuItem jMenuProduto_ebg;
@@ -447,12 +459,13 @@ public class JFrmPrincipal_ebg extends javax.swing.JFrame {
     private javax.swing.JMenu jMnuPrincipal_ebg;
     private javax.swing.JMenuItem jMnuVendas_ebg;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator10;
+    private javax.swing.JToolBar.Separator jSeparator11;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
-    private javax.swing.JToolBar.Separator jSeparator4;
-    private javax.swing.JToolBar.Separator jSeparator5;
-    private javax.swing.JToolBar.Separator jSeparator6;
     private javax.swing.JToolBar.Separator jSeparator7;
+    private javax.swing.JToolBar.Separator jSeparator8;
+    private javax.swing.JToolBar.Separator jSeparator9;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

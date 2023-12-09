@@ -45,7 +45,7 @@ public class Cartao_DAO extends DAO_Abstract{
     public Object list(int id) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CartaoEbg.class); //importar do bean e do hibernate; criteria é pra fazer select * from na O.O
-        criteria.add(Restrictions.eq("idusuarios", id)); //é um método estático; id é o parametro da linha 46
+        criteria.add(Restrictions.eq("idcartao", id)); //é um método estático; id é o parametro da linha 46
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista; //registros no java sao transformados em bean; nao precisa do array pq mudou na linha 50 só pra list
@@ -82,7 +82,7 @@ public class Cartao_DAO extends DAO_Abstract{
     session.beginTransaction();
     Criteria criteria = session.createCriteria(CartaoEbg.class);
     criteria.add(Restrictions.like("nomecompletoEbg","%"+nomecompletoEbg+"%"));
-    criteria.add(Restrictions.ge("cpfEbg",cscEbg));
+    criteria.add(Restrictions.ge("cscEbg",cscEbg));
     List lista = criteria.list();
     session.getTransaction().commit();
     return lista;

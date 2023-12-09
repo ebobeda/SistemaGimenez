@@ -45,7 +45,7 @@ public class Produto_DAO extends DAO_Abstract{
     public Object list(int id) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(ProdutoEbg.class); //importar do bean e do hibernate; criteria é pra fazer select * from na O.O
-        criteria.add(Restrictions.eq("idusuarios", id)); //é um método estático; id é o parametro da linha 46
+        criteria.add(Restrictions.eq("idproduto", id)); //é um método estático; id é o parametro da linha 46
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista; //registros no java sao transformados em bean; nao precisa do array pq mudou na linha 50 só pra list

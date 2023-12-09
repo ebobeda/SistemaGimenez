@@ -1,10 +1,13 @@
 package bean;
-// Generated 09/11/2023 13:54:16 by Hibernate Tools 4.3.1
+// Generated 08/12/2023 16:53:50 by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,20 +26,20 @@ public class VendaprodutoEbg  implements java.io.Serializable {
      private int idvendaprodutoEbg;
      private ProdutoEbg produtoEbg;
      private VendaEbg vendaEbg;
-     private VendedorEbg vendedorEbg;
      private int quantidadeEbg;
-     private String valorunitEbg;
+     private double valorunitEbg;
 
-    public VendaprodutoEbg(int idvendaprodutoEbg, ProdutoEbg produtoEbg, VendaEbg vendaEbg, VendedorEbg vendedorEbg, int quantidadeEbg, String valorunitEbg) {
-       this.idvendaprodutoEbg = idvendaprodutoEbg;
-       this.produtoEbg = produtoEbg;
-       this.vendaEbg = vendaEbg;
-       this.vendedorEbg = vendedorEbg;
-       this.quantidadeEbg = quantidadeEbg;
-       this.valorunitEbg = valorunitEbg;
+    public VendaprodutoEbg() {
+    }
+
+	
+    public VendaprodutoEbg(ProdutoEbg produtoEbg, VendaEbg vendaEbg, int quantidadeEbg) {
+        this.produtoEbg = produtoEbg;
+        this.vendaEbg = vendaEbg;
+        this.quantidadeEbg = quantidadeEbg;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="idvendaproduto_ebg", unique=true, nullable=false)
@@ -48,7 +51,7 @@ public class VendaprodutoEbg  implements java.io.Serializable {
         this.idvendaprodutoEbg = idvendaprodutoEbg;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="produto_ebg", nullable=false)
     public ProdutoEbg getProdutoEbg() {
         return this.produtoEbg;
@@ -58,24 +61,14 @@ public class VendaprodutoEbg  implements java.io.Serializable {
         this.produtoEbg = produtoEbg;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="venda", nullable=false)
+@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="fkvenda_ebg", nullable=false)
     public VendaEbg getVendaEbg() {
         return this.vendaEbg;
     }
     
     public void setVendaEbg(VendaEbg vendaEbg) {
         this.vendaEbg = vendaEbg;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="vendedor_ebg", nullable=false)
-    public VendedorEbg getVendedorEbg() {
-        return this.vendedorEbg;
-    }
-    
-    public void setVendedorEbg(VendedorEbg vendedorEbg) {
-        this.vendedorEbg = vendedorEbg;
     }
 
     
@@ -89,17 +82,14 @@ public class VendaprodutoEbg  implements java.io.Serializable {
     }
 
     
-    @Column(name="valorunit_ebg", nullable=false, length=80)
-    public String getValorunitEbg() {
+    @Column(name="valorunit_ebg", precision=10)
+    public double getValorunitEbg() {
         return this.valorunitEbg;
     }
     
-    public void setValorunitEbg(String valorunitEbg) {
+    public void setValorunitEbg(double valorunitEbg) {
         this.valorunitEbg = valorunitEbg;
     }
-
-
-
 
 }
 

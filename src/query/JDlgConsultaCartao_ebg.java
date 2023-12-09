@@ -150,7 +150,8 @@ public class JDlgConsultaCartao_ebg extends javax.swing.JDialog {
                 if(!jTxtNomecompleto_ebg.getText().equals("")) {
                 List lista = cartao_DAO.listNomecompleto( jTxtNomecompleto_ebg.getText());
                 cartaoController_ebg.setList(lista);
-            } if(!jTxtCsc_ebg.getText().equals("")) {
+            }
+                if(!jTxtCsc_ebg.getText().equals("")) {
                 List lista = cartao_DAO.listCsc(Util_ebg.strInt(jTxtCsc_ebg.getText()));
                 cartaoController_ebg.setList(lista);
             }}

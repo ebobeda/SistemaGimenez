@@ -46,12 +46,12 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://10.7.0.51:33062/db_estefani_gimenez?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">estefani_gimenez</property>
     <property name="hibernate.connection.password">estefani_gimenez</property>
-    <mapping class="bean.ClienteEbg"/>
-    <mapping class="bean.VendaprodutoEbg"/>
-    <mapping class="bean.UsuarioEbg"/>
-    <mapping class="bean.CartaoEbg"/>
     <mapping class="bean.VendedorEbg"/>
+    <mapping class="bean.CartaoEbg"/>
+    <mapping class="bean.UsuarioEbg"/>
     <mapping class="bean.ProdutoEbg"/>
     <mapping class="bean.VendaEbg"/>
+    <mapping class="bean.ClienteEbg"/>
+    <mapping class="bean.VendaprodutoEbg"/>
   </session-factory>
 </hibernate-configuration>

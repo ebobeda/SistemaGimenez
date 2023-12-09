@@ -21,21 +21,21 @@ public class JDlgVendedor_ebg extends javax.swing.JDialog {
 
     VendedorEbg vendedorEbg;
     Vendedor_DAO vendedor_DAO;
-    VendedorController_ebg vendedorControle_ebg;
-    JDlgVendedorNovoIA jDlgVendedorNovoIA;
+    VendedorController_ebg vendedorController_ebg;
+    JDlgVendedorIA_ebg jDlgVendedorIA_ebg;
     boolean incluindo;
      
     public JDlgVendedor_ebg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Cadastro de Vendedores");
+        setTitle("Inclusão de Vendedores");
         setLocationRelativeTo(null);
-        jDlgVendedorNovoIA = new JDlgVendedorNovoIA(null, true);
-        vendedorControle_ebg = new VendedorController_ebg();
+        jDlgVendedorIA_ebg = new JDlgVendedorIA_ebg(null, true);
+        vendedorController_ebg = new VendedorController_ebg();
         vendedor_DAO = new Vendedor_DAO();
         List lista = vendedor_DAO.listAll();
-        vendedorControle_ebg.setList(lista);
-        jTable1.setModel(vendedorControle_ebg);
+        vendedorController_ebg.setList(lista);
+        jTable1.setModel(vendedorController_ebg);
     }
 
     /**
@@ -119,25 +119,34 @@ public class JDlgVendedor_ebg extends javax.swing.JDialog {
     private void jBtnIncluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_ebgActionPerformed
         // TODO add your handling code here:
         incluindo = true;
-        jDlgVendedorNovoIA.setTitle("Incluir");
-        jDlgVendedorNovoIA.setVisible(true);
+        jDlgVendedorIA_ebg.setTitle("Incluir");
+        jDlgVendedorIA_ebg.setVisible(true);
+        List lista = vendedor_DAO.listAll();
+        vendedorController_ebg.setList(lista);
     }//GEN-LAST:event_jBtnIncluir_ebgActionPerformed
 
     private void jBtnAlterar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_ebgActionPerformed
         // TODO add your handling code here:
-        jDlgVendedorNovoIA.setTitle("Alterar");
-        jDlgVendedorNovoIA.setVisible(true);
+        jDlgVendedorIA_ebg.setTitle("Alterar");
+        int sel = jTable1.getSelectedRow();
+        VendedorEbg vendedorEbg = vendedorController_ebg.getBean(sel);
+        jDlgVendedorIA_ebg.beanView(vendedorEbg);
+        
+        jDlgVendedorIA_ebg.setVisible(true);
+         List lista = vendedor_DAO.listAll();
+         vendedorController_ebg.setList(lista);
+        
     }//GEN-LAST:event_jBtnAlterar_ebgActionPerformed
 
     private void jBtnExcluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_ebgActionPerformed
         // TODO add your handling code here:
         if(Util_ebg.perguntar("Deseja excuir este vendedor?") == true) {
         int sel = jTable1.getSelectedRow();
-        VendedorEbg vendedorEbg = vendedorControle_ebg.getBean(sel);
+        VendedorEbg vendedorEbg = vendedorController_ebg.getBean(sel);
         vendedor_DAO.delete(vendedorEbg);
         
         List lista = vendedor_DAO.listAll();
-        vendedorControle_ebg.setList(lista);
+        vendedorController_ebg.setList(lista);
         Util_ebg.mensagem("Excluido com sucesso!");
         }else{
         Util_ebg.mensagem("Exclusão cancelada!");}
@@ -168,6 +177,62 @@ public class JDlgVendedor_ebg extends javax.swing.JDialog {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JDlgVendedor_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

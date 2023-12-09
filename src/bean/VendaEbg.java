@@ -1,7 +1,8 @@
 package bean;
-// Generated 09/11/2023 13:54:16 by Hibernate Tools 4.3.1
+// Generated 08/12/2023 16:53:50 by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,20 +31,18 @@ public class VendaEbg  implements java.io.Serializable {
      private ClienteEbg clienteEbg;
      private VendedorEbg vendedorEbg;
      private Date dataEbg;
-     private String totalvendaEbg;
+     private double totalvendaEbg;
 
     public VendaEbg() {
     }
 
 	
-    public VendaEbg(int idvendaEbg, ClienteEbg clienteEbg, VendedorEbg vendedorEbg, Date dataEbg, String totalvendaEbg) {
+    public VendaEbg(int idvendaEbg, ClienteEbg clienteEbg, VendedorEbg vendedorEbg, Date dataEbg) {
         this.idvendaEbg = idvendaEbg;
         this.clienteEbg = clienteEbg;
         this.vendedorEbg = vendedorEbg;
         this.dataEbg = dataEbg;
-        this.totalvendaEbg = totalvendaEbg;
     }
-   
      @Id 
 
     
@@ -56,7 +55,7 @@ public class VendaEbg  implements java.io.Serializable {
         this.idvendaEbg = idvendaEbg;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="cliente_ebg", nullable=false)
     public ClienteEbg getClienteEbg() {
         return this.clienteEbg;
@@ -66,7 +65,7 @@ public class VendaEbg  implements java.io.Serializable {
         this.clienteEbg = clienteEbg;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="vendedor_ebg", nullable=false)
     public VendedorEbg getVendedorEbg() {
         return this.vendedorEbg;
@@ -87,18 +86,14 @@ public class VendaEbg  implements java.io.Serializable {
     }
 
     
-    @Column(name="totalvenda_ebg", nullable=false, length=45)
-    public String getTotalvendaEbg() {
+    @Column(name="totalvenda_ebg", precision=10)
+    public double getTotalvendaEbg() {
         return this.totalvendaEbg;
     }
     
-    public void setTotalvendaEbg(String totalvendaEbg) {
+    public void setTotalvendaEbg(double totalvendaEbg) {
         this.totalvendaEbg = totalvendaEbg;
     }
-
-
-
-
 }
 
 

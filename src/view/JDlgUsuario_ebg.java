@@ -169,7 +169,7 @@ public class JDlgUsuario_ebg extends javax.swing.JDialog {
 
         jLabel2.setText("Nome");
 
-        jCboNivel_ebg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCboNivel_ebg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
         jCboNivel_ebg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCboNivel_ebgActionPerformed(evt);
@@ -338,7 +338,7 @@ public class JDlgUsuario_ebg extends javax.swing.JDialog {
         jDlgUsuarioPesquisar_ebg.setTelaAnterior(this);
         jDlgUsuarioPesquisar_ebg.setVisible(true);
         
-        Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnPesquisar_ebg);
+        Util_ebg.habilitar(true, jBtnIncluir_ebg, jBtnAlterar_ebg, jBtnExcluir_ebg, jBtnCancelar_ebg, jBtnPesquisar_ebg);
         Util_ebg.habilitar(false, jBtnIncluir_ebg, jBtnConfirmar_ebg);
     }//GEN-LAST:event_jBtnPesquisar_ebgActionPerformed
 

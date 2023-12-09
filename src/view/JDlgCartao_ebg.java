@@ -16,26 +16,27 @@ import tools.Util_ebg;
 public class JDlgCartao_ebg extends javax.swing.JDialog {
 
     /**
-     * Creates new form JDlgCartao
+     * Creates new form JDlgCartao_ebg
      */
     
     CartaoEbg cartaoEbg;
     Cartao_DAO cartao_DAO;
-    CartaoController_ebg cartaoControle_ebg;
-    JDlgCartaoNovoIA jDlgCartaoNovoIA;
+    CartaoController_ebg cartaoController_ebg;
+    JDlgCartao_ebg jDlgCartao_ebg;
+    JDlgCartaoIA_ebg jDlgCartaoIA_ebg;
     boolean incluindo;
     
     public JDlgCartao_ebg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Inclusão");
+        setTitle("Inclusão de Cartões");
         setLocationRelativeTo(null);
-        jDlgCartaoNovoIA = new JDlgCartaoNovoIA(null, true);
-        cartaoControle_ebg = new CartaoController_ebg();
+        jDlgCartaoIA_ebg = new JDlgCartaoIA_ebg(null, true);
+        cartaoController_ebg = new CartaoController_ebg();
         cartao_DAO = new Cartao_DAO();
         List lista = cartao_DAO.listAll();
-        cartaoControle_ebg.setList(lista);
-        jTable1.setModel(cartaoControle_ebg);
+        cartaoController_ebg.setList(lista);
+        jTable1.setModel(cartaoController_ebg);
     }
 
     /**
@@ -108,6 +109,7 @@ public class JDlgCartao_ebg extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1_ebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -117,25 +119,31 @@ public class JDlgCartao_ebg extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnIncluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_ebgActionPerformed
-        incluindo = true;
-        jDlgCartaoNovoIA.setTitle("Incluir");
-        jDlgCartaoNovoIA.setVisible(true);
+        jDlgCartaoIA_ebg.setTitle("Incluir");
+        jDlgCartaoIA_ebg.setVisible(true);
+        List lista = cartao_DAO.listAll();
+        cartaoController_ebg.setList(lista);
     }//GEN-LAST:event_jBtnIncluir_ebgActionPerformed
 
     private void jBtnAlterar_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_ebgActionPerformed
-        // TODO add your handling code here:
-        jDlgCartaoNovoIA.setTitle("Alterar");
-        jDlgCartaoNovoIA.setVisible(true);
+        jDlgCartaoIA_ebg.setTitle("Alterar");
+        int sel = jTable1.getSelectedRow();
+        CartaoEbg cartaoEbg = cartaoController_ebg.getBean(sel);
+        jDlgCartaoIA_ebg.beanView(cartaoEbg);
+        
+        jDlgCartaoIA_ebg.setVisible(true);
+         List lista = cartao_DAO.listAll();
+         cartaoController_ebg.setList(lista);
     }//GEN-LAST:event_jBtnAlterar_ebgActionPerformed
 
     private void jBtnExcluir_ebgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_ebgActionPerformed
         if(Util_ebg.perguntar("Deseja excuir este cartão?") == true) {
         int sel = jTable1.getSelectedRow();
-        CartaoEbg cartaoEbg = cartaoControle_ebg.getBean(sel);
+        CartaoEbg cartaoEbg = cartaoController_ebg.getBean(sel);
         cartao_DAO.delete(cartaoEbg);
         
         List lista = cartao_DAO.listAll();
-        cartaoControle_ebg.setList(lista);
+        cartaoController_ebg.setList(lista);
         Util_ebg.mensagem("Excluido com sucesso!");
         }else{
         Util_ebg.mensagem("Exclusão cancelada!");}
@@ -166,6 +174,12 @@ public class JDlgCartao_ebg extends javax.swing.JDialog {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JDlgCartao_ebg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
